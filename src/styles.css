@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.footer{
+    background-color: orangered;
+    width: 100%;
+    color: purple;
+    text-align: center;
+    padding: 2rem;
+    float: right;
+
+}
+mat-sidenav-container{
+    height: 10%;
+}
+mat-sidenav-content{
+    height: 100%;
+    
+}
+mat-sidenav{
+    background-color: lightblue;
+    width: 500px;
+padding: 5%;
+}
+
+
+
+mat-toolbar {
+    justify-content: space-between;
+}
+mat-toolbar a{
+    justify-content: space-between;
+    text-decoration: none;
+}
+.error{
+    text-align: center;
+    font: 4em sans-serif;
+}
+.error h1{
+
+    color: red;
+}
+.error p{
+
+    color: blueviolet;
+}
+@media only screen and (max-width:700px) {
+    mat-card{
+        width: 300px;
+        height: fit-content;
+        margin: 5px;
+        float: left;
+    }
+}
+@media only screen and (max-width:500px) {
+    mat-card{
+        width: 200px;
+        height: fit-content;
+        margin: 4.3px;
+        float: left;
+    }
+}

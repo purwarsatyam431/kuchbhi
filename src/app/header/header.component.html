@@ -1,0 +1,25 @@
+<!-- 
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+  <button (click)="sidenav.close()" mat-fab color="accent" ><mat-icon>home</mat-icon></button>
+  <a routerLink="/shirt" (click)="sidenav.close()">Shirts</a><br>
+  <a routerLink="/pant" (click)="sidenav.close()">Pants</a>
+  </mat-sidenav>
+    <mat-sidenav-content>
+       
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+   -->
+  <mat-toolbar>
+
+    <!-- <button mat-mini-fab color="primary" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button> -->
+    <span>KuchBhi.com</span>
+    <a routerLink="/shirt">Shirts</a><br>
+    <a routerLink="/pant">Pants</a>
+   
+    <button mat-mini-fab color="accent" [routerLink]="['/Dashboard']" routerLinkActive="router-link-active" ><mat-icon>bookmark</mat-icon></button>
+    </mat-toolbar>
+
+  
+  

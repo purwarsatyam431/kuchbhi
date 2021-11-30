@@ -1,0 +1,36 @@
+
+mat-card{
+    /* background: lavenderblush; */
+    width: 35%;
+margin: auto;
+
+}
+mat-form-field{
+    width: 100%;
+}
+.error{
+    color: red;
+    background-color: lavenderblush;
+    font-size: large;
+    width: 30%;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+@media screen and (max-width: 992px){
+    mat-card {
+        /* background: lavenderblush; */
+        width: 100%;
+    margin: auto;
+    
+    }
+}
+@media screen and (max-width: 600px){
+    
+mat-card {
+    /* background: lavenderblush; */
+    width: 100%;
+margin: auto;
+
+}
+}

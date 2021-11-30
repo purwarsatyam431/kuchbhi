@@ -1,0 +1,50 @@
+<button mat-stroked-button color="primary" (click)="openDialog()"> <mat-icon>add</mat-icon> Add Product</button>
+<table mat-table [dataSource]="data">
+  
+            <!-- ID Column -->
+            <ng-container matColumnDef="MRP">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> MRP </th>
+              <td mat-cell *matCellDef="let row"> {{row.MRP}} </td>
+            </ng-container>
+        
+            <!-- Progress Column -->
+            <ng-container matColumnDef="Rate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Rate </th>
+              <td mat-cell *matCellDef="let row"> {{row.Rate}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="image">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+              <td mat-cell *matCellDef="let row"> <img [src]="row.image" width="50px" height="50px"></td>
+            </ng-container>
+        
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="product_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> product_name </th>
+              <td mat-cell *matCellDef="let row"> {{row.product_name}} </td>
+            </ng-container>
+        
+      
+            
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> quantity </th>
+              <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
+            </ng-container>
+      
+            
+            <ng-container matColumnDef="userId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+              <td mat-cell *matCellDef="let row"> <button mat-mini-fab color="accent" [routerLink]="['/Dashboard/addShirts',row.userId]" (click)="funEditPntMode()" routerLinkActive="router-link-active" ><mat-icon>edit</mat-icon></button> 
+                 &nbsp; <button mat-mini-fab color="warn" (click)="delete(row.userId)"><mat-icon>delete</mat-icon></button> 
+                 &nbsp;
+                 <button mat-mini-fab color="primary"  (click)="funView(row.userId)"  routerLinkActive="router-link-active"><mat-icon>table_view</mat-icon></button>  
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="col"></tr>
+            <tr mat-row *matRowDef="let row; columns: col;"></tr>
+        
+          
+          
+          </table>
+  

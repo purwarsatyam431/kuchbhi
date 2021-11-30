@@ -1,0 +1,17 @@
+        <mat-card *ngFor="let pant of shirts" class="col-md-4">
+            <img mat-card-image src="{{pant.image}}"  alt="{{pant.id}}">
+            <mat-card-content >
+             <h1>{{pant.product_name}}</h1>
+                <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
+                <span>Rate:{{pant.Rate|currency:"INR"}}</span>
+            </mat-card-content>
+            <mat-card-actions>
+                <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a>
+              </mat-card-actions>
+            
+        </mat-card>
+   <div class="error" *ngIf="errorData">
+    <h1>{{errorData.errorTitle}}</h1>
+    <p> {{errorData.errorDesc}}</p>
+</div>
+   
