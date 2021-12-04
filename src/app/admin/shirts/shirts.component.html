@@ -1,4 +1,5 @@
 <a mat-stroked-button color="primary" (click)="openDialog()" > <mat-icon>add</mat-icon> Add Product</a>
+<div *ngIf="data;else sat">
 <table mat-table [dataSource]="data">
 
           <!-- ID Column -->
@@ -38,7 +39,8 @@
             <td mat-cell *matCellDef="let row"> 
               <button mat-mini-fab color="accent" (click)="funEditMode()" [routerLink]="['/Dashboard/addShirts',row.userId]" routerLinkActive="router-link-active"  ><mat-icon>edit</mat-icon></button> &nbsp;
                 <button mat-mini-fab color="warn" (click)="delete(row.userId)"><mat-icon>delete</mat-icon></button>  &nbsp;
-                <button mat-mini-fab color="primary"  (click)="funView(row.userId)"  routerLinkActive="router-link-active"><mat-icon>table_view</mat-icon></button>  
+                <button mat-mini-fab color="primary"  (click)="funView(row.userId)"  routerLinkActive="router-link-active">
+                  <mat-icon>table_view</mat-icon></button>  
               </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="col"></tr>
@@ -47,5 +49,11 @@
         
         
         </table>
-<h1 *ngIf="errors">{{errors.errorTitle}}</h1>
-<p *ngIf="errors">{{errors.errorDesc}}</p>
+      </div>
+      <ng-template #sat>
+
+      
+        <div class="error" *ngIf="errors" >
+          {{errors|json}}
+        </div>
+      </ng-template>

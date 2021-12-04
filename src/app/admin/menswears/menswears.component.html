@@ -1,5 +1,6 @@
 <button mat-stroked-button color="primary" (click)="openDialog()"> <mat-icon>add</mat-icon> Add Product</button>
-<table mat-table [dataSource]="data">
+<div *ngIf="data">
+<table mat-table [dataSource]="data" >
   
             <!-- ID Column -->
             <ng-container matColumnDef="MRP">
@@ -47,4 +48,9 @@
           
           
           </table>
-  
+        </div>
+        <div class="error" *ngIf="errors">
+          <h1>Status:{{errors.status}}</h1>
+          <h1>{{errors.error.error}}</h1>
+          <p>{{errors.statusText}}</p>
+        </div>

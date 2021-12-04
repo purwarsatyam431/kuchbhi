@@ -12,10 +12,7 @@ import { AddShirtsComponent } from '../add-shirts/add-shirts.component';
   templateUrl: './shirts.component.html',
   styleUrls: ['./shirts.component.css']
 })
-export class ShirtsComponent implements OnInit,AfterViewChecked {
-ngAfterViewChecked(){
-  this.fetchData()
-}
+export class ShirtsComponent implements OnInit {
   ngOnInit(){
     this.fetchData()
    
@@ -29,10 +26,7 @@ ngAfterViewChecked(){
 errors;
 editMode:string='true';
 col=['image','product_name','MRP','Rate','quantity','userId']
-openDialog(){
-this.dialog.open(AddShirtsComponent,{width:'60%'})
-this.behaviour.editMode.next('false')
-}
+
 fetchData(){
   this.s1.getMenShirt().pipe(map(responseData=>{
    // console.log(responseData);
@@ -47,11 +41,19 @@ fetchData(){
     return empArray
   })).subscribe((d)=>this.data=d,((error)=>this.errors=error))
 }
+openDialog(){
+  this.dialog.open(AddShirtsComponent).afterClosed().subscribe((d)=>
+  {
+  this.fetchData()
+  console.log(this.fetchData())
+})
+  this.behaviour.editMode.next('false')
+  }
 delete(id){
   if(confirm("Do you Wana delete record")){
     console.log(id)
     this.s1.delete(id).subscribe((d)=>
-    console.warn(d))
+    this.fetchData())
     
   }
   

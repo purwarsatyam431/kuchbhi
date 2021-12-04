@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorService } from '../services/error.service';
 import { Products } from './products';
@@ -18,9 +18,7 @@ errorData={}
 
 
   getMenPant():Observable<Products[]>{
-return this.http.get<Products[]>(this.url+'/Men-trackPant.json',{responseType:"json"}).pipe(
-  catchError(this.handleError)
-)
+return this.http.get<Products[]>(this.url+'/Men-trackPant.json',{responseType:"json"})
   }
 
   getMenShirt():Observable<Products[]>{
@@ -86,5 +84,5 @@ private handleError(error: HttpErrorResponse) {
   return throwError(this.errorData);
 
 }
-
+loginTrue=new Subject<string>()
 }

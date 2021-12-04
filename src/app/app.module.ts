@@ -22,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component'
 import { MatInputModule } from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BrowserModule,
     MenModule,HttpClientModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
     ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,
+    LoadingBarHttpClientModule,
+
+    
+    LoadingBarRouterModule,
+
+  
+    LoadingBarModule,
     MenRoutingModule,
     AdminModule,
     AdminRoutingModule,

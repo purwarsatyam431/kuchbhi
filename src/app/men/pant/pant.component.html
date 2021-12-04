@@ -11,7 +11,11 @@
         
     </mat-card>
     <div class="error" *ngIf="errorData">
-    <h1>{{errorData.errorTitle}}</h1>
-    <p> {{errorData.errorDesc}}</p>
+    <!-- <h1>{{errorData.errorTitle}}</h1>
+    <p> {{errorData.errorDesc}}</p> -->
+    
+    <h1>Status:{{errorData.status}}</h1>
+    <h1>{{errorData.error.error}}</h1>
+    <p>{{errorData.statusText}}</p>
 </div>
    

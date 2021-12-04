@@ -14,11 +14,13 @@
   <mat-toolbar>
 
     <!-- <button mat-mini-fab color="primary" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button> -->
-    <span>KuchBhi.com</span>
-    <a routerLink="/shirt">Shirts</a><br>
-    <a routerLink="/pant">Pants</a>
+    
+<span style="color:blue">𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</span>
+    <a routerLink="/shirt" *ngIf="loginTrue==='false'">Shirts</a><br>
+    <a routerLink="/pant" *ngIf="loginTrue==='false'">Pants</a>
    
-    <button mat-mini-fab color="accent" [routerLink]="['/Dashboard']" routerLinkActive="router-link-active" ><mat-icon>bookmark</mat-icon></button>
+    <button mat-stroked-button color="accent" [routerLink]="['/Dashboard']" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
+    <button mat-stroked-button color="primary" *ngIf="loginTrue==='true'" (click)="logOut()">LogOut</button>
     </mat-toolbar>
 
   

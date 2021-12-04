@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, ViewChild, AfterViewInit, OnInit, AfterContentChecked} from '@angular/core';
+import {Component, ViewChild, AfterViewInit, OnInit, AfterContentChecked, AfterContentInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -14,10 +14,9 @@ import { AddShirtsComponent } from '../add-shirts/add-shirts.component';
   styleUrls: ['./menswears.component.css']
 })
 
-export class  MenswearsComponent implements OnInit,AfterContentChecked{
-  ngAfterContentChecked(){
-    this.fetchData() 
-  }ngOnInit(){
+export class  MenswearsComponent implements OnInit{
+  
+  ngOnInit(){
    this.fetchData()
   }
   constructor(private s1:MenserviceService,public dialog:MatDialog,private behaviour:BehaviourService,
@@ -40,15 +39,20 @@ fetchData(){
     }
     }
     return empArray
-  })).subscribe((d)=>this.data=d,((error)=>this.errors=error))
+  })).subscribe((d)=>this.data=d,((error)=>{this.errors=error
+  console.log(error)
+  }))
 }
 editMode:string='editPant'
 openDialog(){
-this.dialog.open(AddShirtsComponent)
+this.dialog.open(AddShirtsComponent).afterClosed().subscribe((d)=>this.fetchData())
 this.behaviour.editMode.next('Addpant')
+
 }
 delete(id){
-  this.s1.deletePnt(id).subscribe((d)=>console.log(d))
+  if(confirm("Do you want detele this product?")){
+  this.s1.deletePnt(id).subscribe((d)=>this.fetchData())
+}
 }
 funEditPntMode(){
   this.behaviour.editMode.next(this.editMode)

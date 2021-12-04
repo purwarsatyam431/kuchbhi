@@ -28,6 +28,7 @@ errorData;
       }
       }
       return empArray
-    })).subscribe((d)=>this.pants=d,((error)=>this.errorData=error))
+    })).subscribe((d)=>this.pants=d,((error)=>{this.errorData=error
+    console.log(error)}))
   }
 }

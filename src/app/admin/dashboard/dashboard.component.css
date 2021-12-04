@@ -1,17 +1,9 @@
-.left{
-    width: 20%;    
-    position: fixed;
-    top: 20%;
-    left: 0px;
-    z-index: 999;
-
-}
-.right{
-    width:80%;
-    float: right;
-  
-   
-}
 a{
     text-decoration: none;
+}
+.admin{
+    text-align: center;
+    color: blue;
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

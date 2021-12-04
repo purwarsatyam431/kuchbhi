@@ -1,6 +1,7 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormControl ,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenserviceService } from '../men/menservice.service';
 import { AuthService } from '../services/auth.service';
 
 import { ErrorService } from '../services/error.service';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit,AfterContentChecked {
 ngAfterContentChecked(){
   
 }
-  constructor(private rt:Router ,private _authService:AuthService, private _err:ErrorService) { }
+  constructor(private rt:Router ,private _authService:AuthService, private _err:ErrorService,private men:MenserviceService) { }
 
   ngOnInit(): void {
 
@@ -60,14 +61,23 @@ signUpForm(){
 }
 
 signInForm(){
+
   const email=this.form.value.email;
   const password=this.form.value.password;
-   this._authService.signIn(email,password).subscribe((res)=>{console.log(res)},err=>{
+   this._authService.signIn(email,password).subscribe((res)=>{console.log(res)
+    localStorage.setItem("auth","1")
+    this.rt.navigate(["/Dashboard"])
+    this.men.loginTrue.next('true')
+  
+  },err=>{
 this.error=err
 this.hideError=false
 //     this.error=this.errorMessages[err.error.error.message]
    console.log(err)})
-// //    this.rt.navigate(["/Dashboard"])
+   
+   
+   
+ 
 }
 hideError:boolean;
 funHide(){
