@@ -1,0 +1,21 @@
+<mat-card *ngFor="let d of getCartDetails" style="float: left; width: 300px; margin: 1%;">
+    <mat-card-title>
+        {{d.product_name}}
+    </mat-card-title>
+    <mat-card-content>
+        <img [src]="d.image" alt="" height="200px" width="200px">
+        <p><del>{{d.MRP|currency:'INR'}}</del></p>
+    <P>{{d.Rate|currency:'INR'}}</P>
+        <p>{{d.quantity}}</p>
+    </mat-card-content>
+</mat-card>
+<br>    
+<input type="text" [(ngModel)]="coupon" (mouseout)="subtotal()">
+
+<h1>{{total|currency:'INR'}}</h1>
+<h1 *ngIf="coupon==='Satyam20'">-20%Off</h1>
+<h1 *ngIf="coupon==='Satyam40'">-40%Off</h1>
+<h1>{{subTotal|currency:'INR'}}</h1>
+    
+
+<button (click)="pay(subTotal*100)" mat-button color="accent">Procced To Pay:{{subTotal|currency:'INR'}}</button>

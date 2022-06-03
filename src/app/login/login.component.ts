@@ -59,13 +59,16 @@ signUpForm(){
     console.log(err)
   }))
 }
-
+data;
 signInForm(){
 
   const email=this.form.value.email;
   const password=this.form.value.password;
-   this._authService.signIn(email,password).subscribe((res)=>{console.log(res)
+   this._authService.signIn(email,password).subscribe((res)=>{
+     console.log(res)
+     this.data=res
     localStorage.setItem("auth","1")
+    localStorage.setItem("UserInfo",JSON.stringify(this.data))
     this.rt.navigate(["/Dashboard"])
     this.men.loginTrue.next('true')
   

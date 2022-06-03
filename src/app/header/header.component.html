@@ -1,24 +1,10 @@
-<!-- 
 
-<mat-sidenav-container>
-    <mat-sidenav #sidenav>
-  <button (click)="sidenav.close()" mat-fab color="accent" ><mat-icon>home</mat-icon></button>
-  <a routerLink="/shirt" (click)="sidenav.close()">Shirts</a><br>
-  <a routerLink="/pant" (click)="sidenav.close()">Pants</a>
-  </mat-sidenav>
-    <mat-sidenav-content>
-       
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-   -->
   <mat-toolbar>
-
-    <!-- <button mat-mini-fab color="primary" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button> -->
-    
-<span style="color:blue">𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</span>
+    <a href="#">
+<span style="color:blue">𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</span></a>
     <a routerLink="/shirt" *ngIf="loginTrue==='false'">Shirts</a><br>
     <a routerLink="/pant" *ngIf="loginTrue==='false'">Pants</a>
-   
+    <a routerLink="/cart"><mat-icon matBadge="{{cardData}}" matBadgeColor="primary">shopping_cart</mat-icon></a>
     <button mat-stroked-button color="accent" [routerLink]="['/Dashboard']" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
     <button mat-stroked-button color="primary" *ngIf="loginTrue==='true'" (click)="logOut()">LogOut</button>
     </mat-toolbar>

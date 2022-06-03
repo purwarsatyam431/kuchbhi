@@ -3,10 +3,11 @@
         <h2 mat-dialog-title *ngIf="editMode==='Addpant'">Add Pant</h2>
         <h2 mat-dialog-title *ngIf="editMode==='false'">Add Product</h2>
         <h2 mat-dialog-title *ngIf="editMode==='true'">Edit Product</h2>
+        <h2 mat-dialog-title *ngIf="editMode==='editPant'">Edit Product</h2>
     </div>
     <div class="col-md-6" align="end" >
-    <mat-icon mat-dialog-close *ngIf="editMode==='false'">close</mat-icon>
-    <mat-icon mat-dialog-close *ngIf="editMode==='Addpant'">close</mat-icon>
+    <mat-icon mat-dialog-close>close</mat-icon>
+
     </div>
 </div>
 

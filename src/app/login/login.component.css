@@ -17,6 +17,10 @@ mat-form-field{
     padding: 5px;
 
 }
+
+.cursor{
+    cursor: pointer;
+}
 @media screen and (max-width: 992px){
     mat-card {
         /* background: lavenderblush; */

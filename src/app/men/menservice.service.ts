@@ -5,11 +5,21 @@ import { catchError } from 'rxjs/operators';
 import { ErrorService } from '../services/error.service';
 import { Products } from './products';
 
+function _window() : any {
+ 
+  return window;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class MenserviceService {
+  get nativeWindow() : any {
+    return _window();
+  }
+
+
 url="https://kuchbhi-5218a-default-rtdb.firebaseio.com";
+
 
 
 errorData={}

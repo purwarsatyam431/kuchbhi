@@ -18,13 +18,18 @@ import { BannerComponent } from './banner/banner.component'
 import { AdminModule } from './admin/admin.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { MatMenuModule } from '@angular/material/menu';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component'
 import { MatInputModule } from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CartComponent } from './cart/cart.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { SnakComponent } from './snak/snak.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +37,15 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     FooterComponent,
     ErrorComponent,
     BannerComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent,
+    SnakComponent
   ],
   imports: [
     BrowserModule,
     MenModule,HttpClientModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
-    ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,
-    LoadingBarHttpClientModule,
+    ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,IvyCarouselModule,
+    LoadingBarHttpClientModule,MatBadgeModule,FormsModule,
 
     
     LoadingBarRouterModule,

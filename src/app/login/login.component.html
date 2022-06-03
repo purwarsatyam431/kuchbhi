@@ -9,8 +9,10 @@
                 <span *ngIf="error " >{{error}}</span>
 
             </div>
-            <div class="col-md-6" align="right">
-<mat-icon mat-button (click)="funHide()" >close</mat-icon>
+            <div class="col-md-6" align="right" >
+                <div class="cursor">
+<mat-icon  mat-button (click)="funHide()" >close</mat-icon>
+</div>
             </div>            
             </div>
             
@@ -51,7 +53,11 @@
 </div>
 </form> 
 <br>
+<div class="cursor">
 <a  (click)="login()" *ngIf="loginMode===false"> Login here</a>
+</div>
+<div class="cursor">
 <a  (click)="signUp()" *ngIf="loginMode===true"> Create an account</a>
+</div>
 </mat-card-content>
 </mat-card>

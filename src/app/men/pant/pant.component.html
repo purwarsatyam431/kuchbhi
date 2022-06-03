@@ -3,10 +3,14 @@
         <mat-card-content>
          <h1>{{pant.product_name}}</h1>
             <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
-            <span>Rate:{{pant.Rate|currency:"INR"}}</span>
+            <span>Rate:{{pant.Rate|currency:"INR"}}</span><br>
+            <button mat-mini-fab color="warn" (click)="minus(pant)">-</button>&nbsp;
+            {{pant.quantity}}&nbsp;
+            <button (click)="plus(pant)"  mat-mini-fab  color="primary">+</button>
         </mat-card-content>
         <mat-card-actions>
             <a [routerLink]="['/detail',pant.userId]" mat-button>Specification</a>
+            <button mat-raised-button color="accent" (click)="addCart(pant)">Add to cart</button>
           </mat-card-actions>
         
     </mat-card>

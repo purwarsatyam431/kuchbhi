@@ -58,7 +58,9 @@ delete(id){
   }
   
   }
-  funEditMode(){
+  funEditMode(id){
+this.dialog.open(AddShirtsComponent,{data:id}).afterClosed().subscribe(d=>this.fetchData())
+console.log(id)
     this.behaviour.editMode.next(this.editMode)
   }
   funView(id){

@@ -1,1 +1,50 @@
-<p>banner works!</p>
+
+<carousel>
+
+  <div class="carousel-cell" *ngFor="let pant of pant">
+    <mat-card>
+      <img mat-card-image src="{{pant.image}}"  alt="{{pant.id}}">
+      <mat-card-content >
+       <h1>{{pant.product_name}}</h1>
+          <s><span>MRP:{{pant.MRP|currency:"INR"}}</span></s><br>
+          <span>Rate:{{pant.Rate|currency:"INR"}}</span>
+      </mat-card-content>
+      <mat-card-actions>
+          <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a>
+        </mat-card-actions>
+      
+  </mat-card>
+        
+  </div>
+
+</carousel>
+
+
+
+<br>
+
+<br>
+<br>
+
+
+<carousel>
+
+    <div class="carousel-cell" *ngFor="let pant of shirts">
+      <mat-card>
+        <img mat-card-image src="{{pant.image}}" >
+        <mat-card-content >
+         <h1>{{pant.product_name}}</h1>
+           <s> <span>MRP:{{pant.MRP|currency:"INR"}}</span></s><br>
+            <span>Rate:{{pant.Rate|currency:"INR"}}</span>
+        </mat-card-content>
+        <mat-card-actions>
+            <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a>
+          </mat-card-actions>
+        
+    </mat-card>
+          
+    </div>
+
+</carousel>
+
+<br>

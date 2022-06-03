@@ -1,9 +1,12 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviourService } from 'src/app/behaviour.service';
 import { MenserviceService } from 'src/app/men/menservice.service';
 import { Products } from 'src/app/men/products';
+import { ShirtComponent } from 'src/app/men/shirt/shirt.component';
+import { ShirtsComponent } from '../shirts/shirts.component';
 
 @Component({
   selector: 'app-add-shirts',
@@ -12,13 +15,19 @@ import { Products } from 'src/app/men/products';
 })
 export class AddShirtsComponent implements OnInit,AfterContentChecked {
 editMode:string='false';
-  constructor(private s1:MenserviceService, public route:ActivatedRoute,private rt:Router ,private behaviour:BehaviourService) { }
+  constructor(private s1:MenserviceService, public route:ActivatedRoute,private rt:Router ,
+    
+    private behaviour:BehaviourService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<ShirtsComponent>
+    ) { }
 addEmp=new Products();
 editEmp=new Products();
 ngAfterContentChecked(){
   
 }
   ngOnInit(): void {
+   
 
    this.behaviour.editMode.subscribe((d)=>this.editMode=d)
    this.editpantss()
@@ -49,29 +58,16 @@ ngAfterContentChecked(){
       }
   }
 
-  edit(){
-    
-    console.log(this.route.snapshot.params.id)
-this.s1.getMenPantDetail(this.route.snapshot.params.id).subscribe((d)=>
-this.form=new FormGroup({
-  MRP:new FormControl(d['MRP']),
-  Rate:new FormControl(d['Rate']),
-  image:new FormControl(d['image']),
-  product_name:new FormControl(d['product_name']),
-  quantity:new FormControl(d['quantity']),
-  short_desc:new FormControl(d['short_desc'])
-}))
-  }
 
   editData(){
-    this.s1.editShirt(this.route.snapshot.params.id,this.form.value).subscribe((d)=>console.log(d))
-    this.rt.navigate(['/Dashboard/shirts'])
+    this.s1.editShirt(this.data,this.form.value).subscribe((d)=>console.log(d))
+   // this.rt.navigate(['/Dashboard/shirts'])
    
   }
   editpantss(){
     if(this.editMode==='editPant'){
     console.log(this.route.snapshot.params.id)
-this.s1.getMenPantDetail(this.route.snapshot.params.id).subscribe((d)=>
+this.s1.getMenPantDetail(this.data).subscribe((d)=>
 this.form=new FormGroup({
   MRP:new FormControl(d['MRP']),
   Rate:new FormControl(d['Rate']),
@@ -81,8 +77,8 @@ this.form=new FormGroup({
   short_desc:new FormControl(d['short_desc'])
 }))}
 else{
-  console.log(this.route.snapshot.params.id)
-  this.s1.getMenShirtDetail(this.route.snapshot.params.id).subscribe((d)=>
+  console.log(this.data)
+  this.s1.getMenShirtDetail(this.data).subscribe((d)=>
   this.form=new FormGroup({
     MRP:new FormControl(d['MRP']),
     Rate:new FormControl(d['Rate']),
@@ -95,8 +91,8 @@ else{
   }
 
   editPantData(){
-    this.s1.editpant(this.route.snapshot.params.id,this.form.value).subscribe((d)=>console.log(d))
-    this.rt.navigate(['/Dashboard/pants'])
+    this.s1.editpant(this.data,this.form.value).subscribe((d)=>console.log(d))
+    
   }
 
   postPant(){

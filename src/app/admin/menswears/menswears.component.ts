@@ -54,7 +54,8 @@ delete(id){
   this.s1.deletePnt(id).subscribe((d)=>this.fetchData())
 }
 }
-funEditPntMode(){
+funEditPntMode(id){
+  this.dialog.open(AddShirtsComponent,{data:id}).afterClosed().subscribe(d=>this.fetchData())
   this.behaviour.editMode.next(this.editMode)
 }
 funView(id){
