@@ -9,9 +9,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card'
-
+import { MinLengthPipe } from '../pipes/min-length.pipe';
 @NgModule({
-  declarations: [PantComponent, ShirtComponent, DetailComponent],
+  declarations: [PantComponent, ShirtComponent, DetailComponent ,MinLengthPipe],
   imports: [
     CommonModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,
     MenRoutingModule

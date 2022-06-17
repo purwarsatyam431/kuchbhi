@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public rt:Router) { }
 
   ngOnInit(): void {
   }
-
-}
+  form:FormGroup=new FormGroup({
+    email:new FormControl("",[Validators.required]),
+    password:new FormControl("",[Validators.required])
+  })
+  signInForm(){
+    if(this.form.value.email==='Admin@Kuchbhi.com' && this.form.value.password==="123qwe"){
+      localStorage.setItem("auth",'1')
+      this.rt.navigate(['/Dashboard'])
+    }
+  }
+  }

@@ -48,6 +48,7 @@ private authenticatatedUser(email,userId,token,expiresIn){
    const expirationDate=new Date(new Date().getTime() +expiresIn*1000);
   const User=new user(email,userId,token,expirationDate)
 console.log(User)
+localStorage.setItem("User=>",JSON.stringify(User))
   this.User.next(User)
 
 }

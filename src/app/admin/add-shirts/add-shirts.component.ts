@@ -32,6 +32,16 @@ ngAfterContentChecked(){
    this.behaviour.editMode.subscribe((d)=>this.editMode=d)
    this.editpantss()
   }
+  audFileSelected(e){
+    if(e.target.files){
+      var reader=new FileReader();
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload=(event:any)=>{
+//         this.form.value.image=event.target.result;
+         this.form.controls.image.setValue(event.target.result);
+      }
+        }
+  }
   form:FormGroup=new FormGroup({
     MRP:new FormControl("",Validators.required),
     Rate:new FormControl("",Validators.required),
@@ -111,6 +121,7 @@ else{
            alert("Enter Data")
          }
   }
+
 
 
 

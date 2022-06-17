@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.CardDetails()
+    this.getDetails()
   }
   getCartDetails:any=[]
   total:any=[];
@@ -135,8 +136,19 @@ console.log(event.detail.razorpay_payment_id)//pay_JUbBxDdSWtcVsG
 console.log(event)
 //his.pp(this.package_id,event.detail.razorpay_payment_id,this.message)
 
-//Swal.fire({icon: 'success', title: this.message,text:event.detail.razorpay_payment_id});
+Swal.fire({icon: 'success', title: this.message,text:event.detail.razorpay_payment_id});
+
+}
+
+email;
+sat
+getDetails(){
+ this.sat= JSON.parse(localStorage.getItem("UserInfo"))
+this.email=this.sat.email;
+console.log(this.sat)
+console.log(this.email)
 
 }
 
 }
+

@@ -29,6 +29,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CartComponent } from './cart/cart.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { SnakComponent } from './snak/snak.component';
+// import {MinLengthPipe} from '../app/pipes/min-length.pipe'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SnakComponent } from './snak/snak.component';
     BannerComponent,
     LoginComponent,
     CartComponent,
-    SnakComponent
+    SnakComponent,
+   
   ],
   imports: [
     BrowserModule,

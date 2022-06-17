@@ -67,10 +67,7 @@ signInForm(){
    this._authService.signIn(email,password).subscribe((res)=>{
      console.log(res)
      this.data=res
-    localStorage.setItem("auth","1")
     localStorage.setItem("UserInfo",JSON.stringify(this.data))
-    this.rt.navigate(["/Dashboard"])
-    this.men.loginTrue.next('true')
   
   },err=>{
 this.error=err

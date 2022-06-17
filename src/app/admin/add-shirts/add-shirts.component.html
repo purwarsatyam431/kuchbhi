@@ -45,10 +45,9 @@
             
         </div>
         <div class="col-md-4">
-            <mat-form-field>
-                <mat-label>Image</mat-label>
-            <input type="string" matInput formControlName="image">  
-            </mat-form-field>
+            
+            <input type="file" formControlName="image" (change)="audFileSelected($event)">  
+            
 </div>
 
     </div>
