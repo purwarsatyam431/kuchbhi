@@ -48,6 +48,16 @@ postData(data:Products):Observable<Products>{
     catchError(this.handleError)
   )
 }
+postCart(data:any):Observable<any>{
+return this.http.post<any>(this.url+"/cart.json",data).pipe(
+  catchError(this.handleError)
+)
+}
+GetCart():Observable<any>{
+  return this.http.get<any>(this.url+"/cart.json").pipe(
+    catchError(this.handleError)
+  )
+  }
 
 delete(id){
   return this.http.delete("https://kuchbhi-5218a-default-rtdb.firebaseio.com/Men-shirt"+'/'+id+'.json')

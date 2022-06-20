@@ -9,6 +9,9 @@
         <p>{{d.quantity}}</p>
     </mat-card-content>
 </mat-card>
+
+
+
 <br>    
 <input type="text" [(ngModel)]="coupon" (mouseout)="subtotal()">
 
@@ -19,3 +22,4 @@
     
 
 <button (click)="pay(subTotal*100)" mat-button color="accent">Procced To Pay:{{subTotal|currency:'INR'}}</button>
+<button (click)="postCartData()">postCart</button>

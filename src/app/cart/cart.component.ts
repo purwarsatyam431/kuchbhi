@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MenserviceService } from '../men/menservice.service';
 import Swal from 'sweetalert2';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,6 +15,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.CardDetails()
     this.getDetails()
+
   }
   getCartDetails:any=[]
   total:any=[];
@@ -120,11 +123,11 @@ this.rzp1.on('payment.failed', function (response: any) {
 
 );
 
-//this.amunt=Math.floor(i/100)
+this.amunt=Math.floor(i/100)
 }
-
+amunt
 message;
-//val=Math.floor(this.amunt/100)
+//val=Math.floor(this.options.amount/100)
 @HostListener('window:payment.success', ['$event'])
 onPaymentSuccess(event: any): void  {
 this.message = "success";
@@ -135,8 +138,12 @@ this.message = "success";
 console.log(event.detail.razorpay_payment_id)//pay_JUbBxDdSWtcVsG
 console.log(event)
 //his.pp(this.package_id,event.detail.razorpay_payment_id,this.message)
-
+this.form.setValue({email: this.email, CardDetails: this.getCartDetails,payment_Id:event.detail.razorpay_payment_id,payAmount:this.amunt})
+this.publicService.postCart(this.form.value).subscribe((d)=>{
+  console.log("success")
+})
 Swal.fire({icon: 'success', title: this.message,text:event.detail.razorpay_payment_id});
+
 
 }
 
@@ -148,6 +155,53 @@ this.email=this.sat.email;
 console.log(this.sat)
 console.log(this.email)
 
+}
+form:FormGroup=new FormGroup({
+email:new FormControl("",Validators.required),
+CardDetails:new FormControl("",[Validators.required]),
+payment_Id:new FormControl("",[Validators.required]),
+payAmount:new FormControl("",[Validators.required]),
+})
+
+postCartData(){
+  if(localStorage.getItem("localCart")){
+ //   this.form.setValue({email: this.email, CardDetails: this.getCartDetails,payment_Id:})
+  }else{
+    this.form.setValue({email: this.email, CardDetails: localStorage.getItem("localCart")})
+  }
+
+  this.publicService.postCart(this.form.value).subscribe(d=>{
+    console.log(d)
+  })
+}
+
+
+cart;
+errorData;
+getCartData(){
+  this.publicService.GetCart().pipe(map(responseData=>{
+   // console.log(responseData);
+   const empArray=[]
+    for(const key in responseData){
+      //console.log(responseData[key])
+//      console.warn(responseData.hasOwnProperty(key))
+      if(responseData.hasOwnProperty(key)){
+      empArray.push({userId:key,...responseData[key]})
+    }
+    }
+    return empArray
+  })).subscribe((response)=>this.cart=response,((error)=>this.errorData=error))
+
+  const CartData=[]
+  for(const key in this.cart.CardDetails){
+    //console.log(responseData[key])
+//      console.warn(responseData.hasOwnProperty(key))
+    if(this.cart.CardDetails.hasOwnProperty(key)){
+      this.getCartDetails=CartData.push({userId:key,...this.cart.CardDetails[key]})
+      
+  }
+  return this.getCartDetails
+  }
 }
 
 }

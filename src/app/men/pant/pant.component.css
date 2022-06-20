@@ -4,16 +4,19 @@
     width: 300px;
 }
 
-.col-md-4{
+/* .col-md-4{
     float: left;
     width: 31.33%;
     margin: 1%;
-}
+} */
 
 mat-card{
     height:fit-content;
     overflow: hidden;
     margin-bottom: 5px;    
+}
+mat-card:hover{
+background-color: antiquewhite; 
 }
 mat-card img{
     height: 200px;
