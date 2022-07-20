@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { map } from 'rxjs/operators';
@@ -11,17 +12,19 @@ import { MenserviceService } from '../menservice.service';
   templateUrl: './shirt.component.html',
   styleUrls: ['./shirt.component.css']
 })
-export class ShirtComponent implements OnInit {
+export class ShirtComponent implements OnInit,OnDestroy {
 errorData;
 shirts;
+datad;
   constructor(private men:MenserviceService ,private behaviourService:BehaviourService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   this.fetchData()
+  this.getDetails()
   }
 
   fetchData(){
-    this.men.getMenShirt().pipe(map(responseData=>{
+  this.datad=  this.men.getMenShirt().pipe(map(responseData=>{
      // console.log(responseData);
      const empArray=[]
       for(const key in responseData){
@@ -62,7 +65,7 @@ shirts;
       let index:number = -1;
       this.itemCart = JSON.parse(localStorage.getItem('localCart'))
       for(let i=0; i<this.itemCart.length; i++ ){
-        if(parseInt(id) === parseInt(this.itemCart[i].userId)){
+        if((id) === (this.itemCart[i].userId)){
           this.itemCart[i].quantity=category.quantity;
           index = i;
           break;
@@ -99,4 +102,33 @@ shirts;
      
     });
   }
+userEmail;
+  getDetails(){
+  const sat= JSON.parse(localStorage.getItem("UserInfo"))
+   this.userEmail=sat.email;
+   console.log(sat)   
+   }
+   form:FormGroup=new FormGroup({
+    email:new FormControl("",Validators.required),
+    userData:new FormControl("",Validators.required),
+
+  })
+
+  postWishlist(p){
+    let storeDataGet:any=[];
+    storeDataGet.push(p);
+this.form.setValue({email:this.userEmail,userData:storeDataGet})    
+    
+if(this.form.valid==true){
+    this.men.postMethod(this.men.Wishlist,this.form.value).subscribe(d=>{
+      console.log(d)
+    })
+  }else{
+    alert("bhad me ja re")
+  }
+
 }
+ngOnDestroy(): void {
+  this.datad.unsubscribe()
+}
+  }

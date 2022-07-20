@@ -1,0 +1,16 @@
+<form [formGroup]="PersonalInfo">
+
+<div class="row">
+    <div class="col-md-8">
+        <mat-form-field >
+            <mat-label>{{label}}</mat-label>
+            <input type="{{fieldType}}" formControlName="{{label}}" matInput>
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="onSave()">Submit</button>
+    </div>
+    </div>
+    
+</form>
+{{data|json}}

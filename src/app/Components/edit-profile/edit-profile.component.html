@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-button color="primary" [routerLink]="['/My-profile']" routerLinkActive="router-link-active" >Back</button>   
+        </div>
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+<h1>        Edit Profile</h1>
+    </div>
+</div>
+<form [formGroup]="PersonalInfo">
+    <div class="row">
+        
+        <div class="col-md-6">
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput formControlName="firstName">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-md-6">
+            
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="lastName">
+    </mat-form-field>
+    
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email">
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field>
+                    <mat-label>Age</mat-label>
+                    <input type="number" matInput formControlName="age">
+                </mat-form-field>
+                
+            </div>
+            <div class="col-md-6 text-center">
+                <img [src]="PersonalInfo.value.image" alt="saa" width="200px" height="200px">
+                <br>
+                <br>
+                <input type="file" formControlName="image" (change)="audFileSelected($event)">  
+
+
+                
+    </div>
+    
+        </div>
+    
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field >
+                <mat-label>Mobile</mat-label>
+                <input type="number" formControlName="mobile" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field >
+                <mat-label>Mobile</mat-label>
+                <input type="number" formControlName="altMobile" matInput>
+            </mat-form-field>
+        </div>
+
+    </div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <mat-form-field >
+            <mat-label>Address</mat-label>
+            <input type="text" formControlName="address" matInput>
+        </mat-form-field>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <mat-form-field >
+            <mat-label>State</mat-label>
+            <input type="text" formControlName="state" matInput>
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <mat-form-field >
+            <mat-label>District</mat-label>
+            <input type="text" formControlName="district" matInput>
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <mat-form-field >
+            <mat-label>Pin Code</mat-label>
+            <input type="number" formControlName="pinCode" matInput>
+        </mat-form-field>
+    </div>
+
+</div>
+
+    <br>
+    <div class="text-end">
+        <button mat-raised-button color="primary" (click)="onSave()">Update Information</button>   
+
+    <button mat-raised-button color="warn" type="reset">Reset</button>
+    </div>
+    </form>
+    </div>

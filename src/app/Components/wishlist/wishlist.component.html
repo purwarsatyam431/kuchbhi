@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row" *ngFor="let d of datas">
+        <div class="col" *ngFor="let pant of  d.userData">
+    <mat-card  class="col-sm-2 text-center" >
+            <img mat-card-image src="{{pant.image}}"  alt="">
+          
+            <mat-card-content>
+             <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name}}</h1>
+                <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
+                <span>Rate:{{pant.Rate|currency:"INR"}}</span><br>
+                <!-- <button mat-mini-fab color="warn" (click)="minus(pant)">-</button>&nbsp;
+                {{pant.quantity}}&nbsp;
+                <button (click)="plus(pant)"  mat-mini-fab  color="primary">+</button> -->
+            </mat-card-content>
+            <mat-card-actions>
+                <!-- <a [routerLink]="['/detail',pant.userId]" mat-button>Specification</a> -->
+                <!-- <button mat-raised-button color="accent" (click)="addCart(pant)">Add to cart</button> -->
+              </mat-card-actions>
+            
+        </mat-card>
+    </div>
+    </div>
+</div>
+<br>
+<hr>
+       
+
+
+
+<li *ngFor="let d of datas">
+
+    <span *ngFor="let d of d.userData">{{d.product_name}}</span>
+</li>
+<br>
+<!-- {{datas|json}} -->
+{{error|json}}

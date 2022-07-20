@@ -1,7 +1,17 @@
-        <mat-card *ngFor="let pant of shirts" class="col-md-4">
+<div class="container-fluid">
+    <div class="row">
+<mat-card *ngFor="let pant of shirts" class="col-sm-2 text-center">
+    <div class="container">
             <img mat-card-image src="{{pant.image}}"  alt="{{pant.id}}">
+            <!-- <mat-icon (click)="postWishlist(pant)">favorite</mat-icon> -->
+            <div class="overlay" style="cursor: pointer;" (click)="postWishlist(pant)">
+                <a  class="icon" title="User Profile" >
+                    <mat-icon>favorite</mat-icon>
+                </a>
+                </div>
+            </div>
             <mat-card-content >
-             <h1>{{pant.product_name}}</h1>
+             <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name|minLength:12}}</h1>
                 <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
                 <span>Rate:{{pant.Rate|currency:"INR"}}</span>
                 <br>
@@ -9,12 +19,15 @@
                 {{pant.quantity}}&nbsp;
                 <button (click)="plus(pant)"  mat-mini-fab  color="primary">+</button>
             </mat-card-content>
-            <mat-card-actions>
-                <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a>
+            <mat-card-actions >
+                <!-- <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a> -->
                 <button mat-raised-button color="accent" (click)="addCart(pant)">Add to cart</button>
+
               </mat-card-actions>
             
         </mat-card>
+        </div>
+        </div>
    <div class="error" *ngIf="errorData">
     <h1>{{errorData.errorTitle}}</h1>
     <p> {{errorData.errorDesc}}</p>

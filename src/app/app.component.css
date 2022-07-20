@@ -1,0 +1,42 @@
+#toolbar{
+    background-color:darkslateblue;
+    box-shadow: 1px 1px 1px white;
+    position: fixed;
+    z-index: 1000;
+    color: #ffff;
+    }
+    #toolbar a{
+      color: #ffff;
+      }
+    .example-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+      }
+      mat-sidenav{
+        width: 250px;
+        background-color: darkslateblue;
+        color: white;
+        padding: 0px;
+      }
+          /* mat-sidenav-content{
+            background-color:skyblue;
+          } */
+          .list-group-item {
+            position: relative;
+            display: block;
+            padding: 1.3rem 1rem;
+            text-decoration: none;
+            background-color: darkslateblue;
+            color: #ffff;
+            border: 1px solid hwb(0deg 0% 100% / 20%);
+            font-size: 18px;
+        }
+        .list-group-item:hover {
+                     background-color: darkslateblue;
+            color: #ffff;
+            font-size: 20px;
+        }

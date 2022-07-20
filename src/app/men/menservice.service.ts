@@ -9,9 +9,7 @@ function _window() : any {
  
   return window;
 }
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MenserviceService {
   get nativeWindow() : any {
     return _window();
@@ -19,7 +17,7 @@ export class MenserviceService {
 
 
 url="https://kuchbhi-5218a-default-rtdb.firebaseio.com";
-
+Wishlist='/wishlist.json'
 
 
 errorData={}
@@ -83,6 +81,38 @@ getMenPantDetail(Userid:string):Observable<Products[]>{
 editpant(id:string,data:Products):Observable<Products>{
   return this.http.put<Products>("https://kuchbhi-5218a-default-rtdb.firebaseio.com/Men-trackPant"+'/'+id+'.json',data)
 }
+getProfileDetail(Userid:string):Observable<any>{
+  return this.http.get<any>("https://kuchbhi-5218a-default-rtdb.firebaseio.com/profile/"+Userid+'.json')
+}
+
+getMyProfile():Observable<any>{
+  return this.http.get<any>("https://kuchbhi-5218a-default-rtdb.firebaseio.com/profile.json").pipe(
+    catchError(this.handleError)
+  )
+  }
+  getMethod(url):Observable<any>{
+    return this.http.get(this.url+url).pipe(catchError(this.handleError))
+      }
+  postMethod(url,data:any):Observable<any>{
+return this.http.post(this.url+url+'/',data).pipe(catchError(this.handleError))
+  }
+
+postMyProfile(data:any):Observable<any>{
+  return this.http.post<any>(this.url+"/profile.json",data).pipe(
+    catchError(this.handleError)
+  )
+  }
+  editMyProfile(id:string,data:any):Observable<any>{
+    return this.http.patch<any>(this.url+"/profile/"+id+".json",data).pipe(
+      catchError(this.handleError)
+    )
+    }
+    editputMyProfile(id:string,data:any):Observable<any>{
+      return this.http.put<any>(this.url+"/profile/"+id+".json",data).pipe(
+        catchError(this.handleError)
+      )
+      }
+
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {
 

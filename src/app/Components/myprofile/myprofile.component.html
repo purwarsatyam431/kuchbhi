@@ -1,0 +1,27 @@
+ <div class="container mb-3" style="background-color: #ffff; box-shadow: 3px 5px 9px blue;" > 
+    <h1 class="mt-3">My Profile</h1>
+    <div class="row" *ngFor="let info of info">
+        <div class="col-sm-4 text-center">
+                    <img mat-card-lg-image [src]="info.image" style="width: inherit" alt="">
+                    <br>
+                    <br>
+                    <p class="text-primary">{{info.firstName}} {{info.lastName}}({{info.age}})</p>
+        </div>
+        <div class="col-sm-8">
+            <h2>Personal Information&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" (click)="remote(info.userId)" ></h2>
+           <label>First Name:</label> <span class="values">{{info.firstName}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" (click)="funEditMode('firstName',info.firstName,info.userId)"></span><br><br>
+           <label>Last Name:</label> <span class="values">{{info.lastName}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+           <label>Email:</label> <span class="values">{{info.email}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>
+           <label>Age:</label> <span class="values">{{info.age}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+           <label>Mobile No.:</label> <span class="values">{{info.mobile}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+           <label>Alternative Mobile No.:</label> <span class="values">{{info.altMobile}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+           <label>Address:</label> <span class="values">{{info.address}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>
+           <label>State:</label> <span class="values">{{info.state}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>
+           <label>District:</label> <span class="values">{{info.district}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>
+           <label>Pin Code:</label> <span class="values">{{info.pinCode}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+        </div>
+    </div>
+
+</div>
+<!-- {{totalInfo|json}}
+{{info|json}} -->

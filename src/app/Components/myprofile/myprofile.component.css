@@ -1,0 +1,14 @@
+
+h1{
+    color: blue;
+font-family: 'Courier New', Courier, monospace;
+}
+label {
+    display: inline-block;
+    font-size: larger;
+    font-weight: 800;
+}
+.values{
+    font-size: larger;
+    color: blue;
+}

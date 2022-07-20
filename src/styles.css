@@ -3,26 +3,15 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .footer{
-    background-color: orangered;
+    background-color:slateblue;
     width: 100%;
-    color: purple;
+    color: white;
     text-align: center;
     padding: 2rem;
     float: right;
 
 }
-mat-sidenav-container{
-    height: 10%;
-}
-mat-sidenav-content{
-    height: 100%;
-    
-}
-mat-sidenav{
-    background-color: lightblue;
-    width: 500px;
-padding: 5%;
-}
+
 
 
 
@@ -45,7 +34,7 @@ mat-toolbar a{
 
     color: blueviolet;
 }
-@media only screen and (max-width:700px) {
+/* @media only screen and (max-width:700px) {
     mat-card{
         width: 300px;
         height: fit-content;
@@ -60,9 +49,9 @@ mat-toolbar a{
         margin: 4.3px;
         float: left;
     }
-}
+} */
 .blue{
-    background:#cb6fde;
-   color: rgb(229, 222, 233);
+    background:#3f51b5;
+   color: #ffff;
    text-align: center;
 }

@@ -29,6 +29,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CartComponent } from './cart/cart.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { SnakComponent } from './snak/snak.component';
+import { MyprofileComponent } from './Components/myprofile/myprofile.component';
+import { EditProfileComponent } from './Components/edit-profile/edit-profile.component';
+import { EditFieldComponent } from './Components/edit-field/edit-field.component';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
 // import {MinLengthPipe} from '../app/pipes/min-length.pipe'
 
 @NgModule({
@@ -41,6 +45,10 @@ import { SnakComponent } from './snak/snak.component';
     LoginComponent,
     CartComponent,
     SnakComponent,
+    MyprofileComponent,
+    EditProfileComponent,
+    EditFieldComponent,
+    WishlistComponent,
    
   ],
   imports: [

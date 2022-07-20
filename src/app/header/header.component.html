@@ -6,7 +6,7 @@
     <a routerLink="/pant" *ngIf="loginTrue==='false'">Pants</a>
     <a routerLink="/cart"><mat-icon matBadge="{{cardData}}" matBadgeColor="primary">shopping_cart</mat-icon></a>
     <button mat-stroked-button color="accent" routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
-    <button mat-stroked-button color="accent" routerLink="/adminLogin" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Admin Pannel</button>
+
     <button mat-stroked-button color="primary" *ngIf="loginTrue==='true'" (click)="logOut()">LogOut</button>
     </mat-toolbar>
 

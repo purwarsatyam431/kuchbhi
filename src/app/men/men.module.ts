@@ -10,11 +10,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card'
 import { MinLengthPipe } from '../pipes/min-length.pipe';
+import { MenserviceService } from './menservice.service';
 @NgModule({
   declarations: [PantComponent, ShirtComponent, DetailComponent ,MinLengthPipe],
   imports: [
     CommonModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,
     MenRoutingModule
-  ]
+  ],
+  providers:[]
 })
 export class MenModule { }

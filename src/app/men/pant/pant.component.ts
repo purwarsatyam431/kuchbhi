@@ -62,7 +62,7 @@ errorData;
       let index:number = -1;
       this.itemCart = JSON.parse(localStorage.getItem('localCart'))
       for(let i=0; i<this.itemCart.length; i++ ){
-        if(parseInt(id) === parseInt(this.itemCart[i].userId)){
+        if((id) ===(this.itemCart[i].userId)){
           this.itemCart[i].quantity=category.quantity;
           index = i;
           break;

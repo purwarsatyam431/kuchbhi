@@ -3,6 +3,7 @@ import { MenserviceService } from '../men/menservice.service';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { BehaviourService } from '../behaviour.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -10,9 +11,10 @@ import { map } from 'rxjs/operators';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private publicService:MenserviceService) { }
+  constructor(private publicService:MenserviceService ,private behaviourService:BehaviourService) { }
 
   ngOnInit(): void {
+    this.behaviourService.cartSubject.subscribe((d)=>this.cardData=d)
     this.CardDetails()
     this.getDetails()
 
@@ -203,6 +205,61 @@ getCartData(){
   return this.getCartDetails
   }
 }
+delete(item){
+ 
+    console.log(item);
+    if(localStorage.getItem('localCart')){
+      this.getCartDetails=JSON.parse(localStorage.getItem('localCart'));
+      for(let i=0;i<this.getCartDetails.length;i++){
+        if(this.getCartDetails[i].userId===item){
+          this.getCartDetails.splice(i,1);
+          localStorage.setItem('localCart',JSON.stringify(this.getCartDetails));
+          this.cardDatafun()
+          this.getTotal()
+          this.subTotal()
 
+        }
+      }
+    }
+    
+}
+cardData:number=0;
+cardDatafun(){
+  if(localStorage.getItem('localCart')!=null){
+    var cartCount=JSON.parse(localStorage.getItem('localCart'))
+    this.cardData=cartCount.length;
+    this.behaviourService.cartSubject.next(this.cardData);
+    
+  }
+  }
+
+plus(id,quantity){
+  for(let i=0; i<this.getCartDetails.length;i++){
+    if(this.getCartDetails[i].userId===id){
+      if(quantity!=10){
+       this.getCartDetails[i].quantity=parseInt(quantity)+1;
+    }
+  }
+}
+localStorage.setItem('localCart',JSON.stringify(this.getCartDetails))
+this.getTotal();
+this.subTotal()
+
+}
+
+
+minus(id,quantity){
+  for(let i=0; i<this.getCartDetails.length;i++){
+    if(this.getCartDetails[i].userId===id){
+      if(quantity!=1){
+       this.getCartDetails[i].quantity=parseInt(quantity)-1;
+    }
+  }
+
+}
+localStorage.setItem('localCart',JSON.stringify(this.getCartDetails))
+this.getTotal();
+this.subTotal()
+}
 }
 

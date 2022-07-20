@@ -1,6 +1,55 @@
-<ngx-loading-bar></ngx-loading-bar>
-<app-header></app-header>
 
-<app-banner *ngIf="router.url=='/'"></app-banner>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+                <h1 style="color: #ffff; text-align: center;  border: 4px solid #ffff;
+                border-radius: 4px; margin: 23px;
+                padding: 4px; font-size: large;" class="mt-4">𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</h1>
+                 <ul class="list-group">
+
+                    <a class="list-group-item" [routerLink]="['/My-profile']" routerLinkActive="router-link-active" ><mat-icon>person</mat-icon>&nbsp;&nbsp;&nbsp;My Profile</a>                   
+                     <a class="list-group-item"><mat-icon>equalizer</mat-icon>&nbsp;&nbsp;&nbsp;Activity</a>
+                     <a class="list-group-item" [routerLink]="['/cart']" routerLinkActive="router-link-active" ><mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;&nbsp; Cart</a>
+                     <a class="list-group-item" [routerLink]="['/wishlist']" routerLinkActive="router-link-active" ><mat-icon>favorite</mat-icon>&nbsp;&nbsp;&nbsp;Wish List</a>
+                     <a class="list-group-item"><mat-icon>sentiment_very_satisfied</mat-icon>&nbsp;&nbsp;&nbsp;Offers</a>
+                     <a class="list-group-item"><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Order History</a>
+                     <a class="list-group-item"><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Recent Order</a>
+                     <a class="list-group-item"><a [routerLink]="['/adminLogin']" routerLinkActive="router-link-active" style="color: #ffff;  text-decoration: none;" ><mat-icon>admin_panel_settings</mat-icon>&nbsp;&nbsp;&nbsp;Admin Pannel</a></a>
+
+                 </ul>
+
+
+
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+    
+      <mat-toolbar id="toolbar"> 
+<mat-icon  (click)="sidenav.toggle()" style="color: aliceblue; cursor: pointer;" >apps</mat-icon>
+    <span style="color:#ffff; cursor: pointer;
+    text-align: center;
+    border: 4px solid #ffff;
+    border-radius: 4px;
+    margin: 23px;
+    padding: 4px;
+    font-size: large;
+" [routerLink]="['/login']" routerLinkActive="router-link-active"  >𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</span>
+        <a routerLink="/shirt">Shirts</a><br>
+        <a routerLink="/pant" >Pants</a>
+        <a routerLink="/cart"><mat-icon matBadge="{{cardData}}" matBadgeColor="primary">shopping_cart</mat-icon></a>
+        <button mat-stroked-button color="accent" routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
+    
+        <button mat-stroked-button  *ngIf="loginTrue==='true'" (click)="logOut()">LogOut</button>
+        </mat-toolbar>
+        <ngx-loading-bar></ngx-loading-bar>
+        <app-header></app-header>
+        <div class="container-fluid mb-3">        
+        <app-banner *ngIf="rt.url=='/'"></app-banner>
+        </div>
+       <!-- <app-content></app-content> -->
+       <div class="container-fluid mb-3">
+       <router-outlet></router-outlet>
+    </div>
+       <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
