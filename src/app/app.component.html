@@ -12,8 +12,8 @@
                      <a class="list-group-item" [routerLink]="['/cart']" routerLinkActive="router-link-active" ><mat-icon>shopping_cart</mat-icon>&nbsp;&nbsp;&nbsp; Cart</a>
                      <a class="list-group-item" [routerLink]="['/wishlist']" routerLinkActive="router-link-active" ><mat-icon>favorite</mat-icon>&nbsp;&nbsp;&nbsp;Wish List</a>
                      <a class="list-group-item"><mat-icon>sentiment_very_satisfied</mat-icon>&nbsp;&nbsp;&nbsp;Offers</a>
-                     <a class="list-group-item"><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Order History</a>
-                     <a class="list-group-item"><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Recent Order</a>
+                     <a class="list-group-item" [routerLink]="['/orderhistory']" routerLinkActive="router-link-active" ><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Order History</a>
+                     <a class="list-group-item" [routerLink]="['/recentOrder']" routerLinkActive="router-link-active" ><mat-icon>history</mat-icon>&nbsp;&nbsp;&nbsp;Recent Order</a>
                      <a class="list-group-item"><a [routerLink]="['/adminLogin']" routerLinkActive="router-link-active" style="color: #ffff;  text-decoration: none;" ><mat-icon>admin_panel_settings</mat-icon>&nbsp;&nbsp;&nbsp;Admin Pannel</a></a>
 
                  </ul>
@@ -37,13 +37,18 @@
         <a routerLink="/shirt">Shirts</a><br>
         <a routerLink="/pant" >Pants</a>
         <a routerLink="/cart"><mat-icon matBadge="{{cardData}}" matBadgeColor="primary">shopping_cart</mat-icon></a>
-        <button mat-stroked-button color="accent" routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
+        <button mat-stroked-button  routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue==='false'">Login</button>
     
         <button mat-stroked-button  *ngIf="loginTrue==='true'" (click)="logOut()">LogOut</button>
         </mat-toolbar>
         <ngx-loading-bar></ngx-loading-bar>
         <app-header></app-header>
-        <div class="container-fluid mb-3">        
+        <div class="container-fluid mb-3"> 
+
+            <marquee width="100%" direction="left"  style="color:blue;">
+            This Website is only for Testing. No one can buy products from here . It is in Development Mode.
+          </marquee>
+
         <app-banner *ngIf="rt.url=='/'"></app-banner>
         </div>
        <!-- <app-content></app-content> -->

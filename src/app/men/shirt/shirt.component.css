@@ -12,7 +12,7 @@ mat-card{
 mat-card img{
     display: block;
     height: 200px;
-    width: fit-content;
+    width: inherit;
 }
 
 .overlay {

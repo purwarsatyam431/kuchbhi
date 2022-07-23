@@ -1,37 +1,55 @@
-<mat-card *ngFor="let d of getCartDetails" style="float: left; width: 300px; margin: 1%;">
-    <mat-card-title>
-        <div class="row">
-    <div class="col-md-10">
-        {{d.product_name}}
+<div class="container-fluid" >
+<div class="row">
+    <div class="col-sm-9" >
+        <mat-card *ngFor="let d of getCartDetails" style="float: left; width: fit-content; margin: 3px;">
+            <mat-card-title>
+                <div class="row">
+            <div class="col-sm-10">
+                
+                {{d.product_name | minLength:13}}
+            
+               
+
+            </div>
+            <div class="col-sm-2" align="end">
+                <mat-icon style="cursor: pointer;     color: red;" (click)="delete(d.userId)">delete</mat-icon>
+            </div>
+        </div>
+            </mat-card-title>
+            <mat-card-content>
+                <img [src]="d.image" alt="" height="200px" width="200px">
+                <p><del>{{d.MRP|currency:'INR'}}</del></p>
+            <P>{{d.Rate|currency:'INR'}}</P>
+                <br>
+                <button mat-mini-fab color="warn" (click)="minus(d.userId,d.quantity)">-</button>&nbsp;
+                {{d.quantity}}&nbsp;
+                <button (click)="plus(d.userId,d.quantity)"  mat-mini-fab  color="primary">+</button>
+        
+            </mat-card-content>
+        </mat-card>
     </div>
-    <div class="col-md-2">
-<mat-icon style="cursor: pointer;" (click)="delete(d.userId)">delete</mat-icon>
+    <div class="col-sm-3" >
+<mat-card style="width: max-content; margin-top:10px;">
+    <mat-card-content>
+        <input type="text" class="form-control" [(ngModel)]="coupon" (mouseout)="subtotal()" placeholder="Coupon">
+        <h1>{{total|currency:'INR'}}</h1>
+        <h1 *ngIf="coupon==='Satyam20'">-20%Off</h1>
+        <h1 *ngIf="coupon==='Satyam40'">-40%Off</h1>
+<h1 class="text-danger">{{invalidCoupan}}</h1>
+        <h1 *ngIf="coupon==='Satyam40'||'Satyam20'">{{subTotal|currency:'INR'}}</h1>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="pay(subTotal*100)" mat-raised-button color="primary">Procced To Pay:{{subTotal|currency:'INR'}}</button>
+
+    </mat-card-actions>
+</mat-card>
+
+        
     </div>
 </div>
-    </mat-card-title>
-    <mat-card-content>
-        <img [src]="d.image" alt="" height="200px" width="200px">
-        <p><del>{{d.MRP|currency:'INR'}}</del></p>
-    <P>{{d.Rate|currency:'INR'}}</P>
-        <p>{{d.quantity}}</p>
-        <br>
-        <button mat-mini-fab color="warn" (click)="minus(d.userId,d.quantity)">-</button>&nbsp;
-        {{d.quantity}}&nbsp;
-        <button (click)="plus(d.userId,d.quantity)"  mat-mini-fab  color="primary">+</button>
+</div>
 
-    </mat-card-content>
-</mat-card>
 
 
 
 <br>    
-<input type="text" [(ngModel)]="coupon" (mouseout)="subtotal()">
-
-<h1>{{total|currency:'INR'}}</h1>
-<h1 *ngIf="coupon==='Satyam20'">-20%Off</h1>
-<h1 *ngIf="coupon==='Satyam40'">-40%Off</h1>
-<h1>{{subTotal|currency:'INR'}}</h1>
-    
-
-<button (click)="pay(subTotal*100)" mat-button color="accent">Procced {{cardData}} To Pay:{{subTotal|currency:'INR'}}</button>
-<button (click)="postCartData()">postCart</button>

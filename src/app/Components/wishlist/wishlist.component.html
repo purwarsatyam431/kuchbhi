@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <div class="row" *ngFor="let d of datas">
-        <div class="col" *ngFor="let pant of  d.userData">
-    <mat-card  class="col-sm-2 text-center" >
+    <div class="row" style="display: inline;" *ngFor="let d of datas">
+     
+    <mat-card  class="col-sm-2 m-2 text-center" style="float: left;"  *ngFor="let pant of  d.userData">
             <img mat-card-image src="{{pant.image}}"  alt="">
           
             <mat-card-content>
-             <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name}}</h1>
+             <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name|minLength:13}}</h1>
                 <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
                 <span>Rate:{{pant.Rate|currency:"INR"}}</span><br>
                 <!-- <button mat-mini-fab color="warn" (click)="minus(pant)">-</button>&nbsp;
@@ -18,19 +18,15 @@
               </mat-card-actions>
             
         </mat-card>
-    </div>
+   
     </div>
 </div>
 <br>
-<hr>
+
        
 
 
 
-<li *ngFor="let d of datas">
-
-    <span *ngFor="let d of d.userData">{{d.product_name}}</span>
-</li>
 <br>
 <!-- {{datas|json}} -->
 {{error|json}}

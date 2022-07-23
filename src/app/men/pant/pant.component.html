@@ -1,7 +1,15 @@
 <div class="container-fluid">
 <div class="row">
 <mat-card *ngFor="let pant of pants" class="col-sm-2 text-center" >
-        <img mat-card-image src="{{pant.image}}"  alt="">
+    <div class="container">
+        <img mat-card-image src="{{pant.image}}"  alt="{{pant.id}}">
+        <!-- <mat-icon (click)="postWishlist(pant)">favorite</mat-icon> -->
+        <div class="overlay" style="cursor: pointer;" (click)="postWishlist(pant)">
+            <a  class="icon" title="User Profile" >
+                <mat-icon>favorite</mat-icon>
+            </a>
+            </div>
+        </div>
       
         <mat-card-content>
          <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name|minLength:12}}</h1>

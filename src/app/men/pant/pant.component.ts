@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
 import { BehaviourService } from 'src/app/behaviour.service';
@@ -17,6 +18,7 @@ pants;
 errorData;
   ngOnInit(): void {
   this.fetchData()
+  this.getDetails()
   }
 
   fetchData(){
@@ -64,15 +66,18 @@ errorData;
       for(let i=0; i<this.itemCart.length; i++ ){
         if((id) ===(this.itemCart[i].userId)){
           this.itemCart[i].quantity=category.quantity;
+          this.itemCart[i].status=category.status="ordered"
           index = i;
           break;
         }
       }
     if(index == -1){
+      category.status="ordered"
       this.itemCart.push(category);
       localStorage.setItem('localCart',JSON.stringify(this.itemCart));
     }
     else{
+      category.status="ordered"
       localStorage.setItem('localCart',JSON.stringify(this.itemCart));
     }
 
@@ -99,5 +104,31 @@ errorData;
      
     });
   }
+  userEmail;
+  getDetails(){
+  const sat= JSON.parse(localStorage.getItem("UserInfo"))
+   this.userEmail=sat.email;
+   console.log(sat)   
+   }
 
+  form:FormGroup=new FormGroup({
+    email:new FormControl("",Validators.required),
+    userData:new FormControl("",Validators.required),
+
+  })
+
+  postWishlist(p){
+    let storeDataGet:any=[];
+    storeDataGet.push(p);
+this.form.setValue({email:this.userEmail,userData:storeDataGet})    
+    
+if(this.form.valid==true){
+    this.men.postMethod(this.men.Wishlist,this.form.value).subscribe(d=>{
+      console.log(d)
+    })
+  }else{
+    alert("bhad me ja re")
+  }
+
+}
 }

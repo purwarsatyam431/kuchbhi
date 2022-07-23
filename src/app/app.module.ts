@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,8 +33,11 @@ import { MyprofileComponent } from './Components/myprofile/myprofile.component';
 import { EditProfileComponent } from './Components/edit-profile/edit-profile.component';
 import { EditFieldComponent } from './Components/edit-field/edit-field.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { RecentOrderComponent } from './Components/recent-order/recent-order.component';
+import { OrderHistoryComponent } from './Components/order-history/order-history.component';
+import {MatStepperModule,MatStepper} from '@angular/material/stepper';
 // import {MinLengthPipe} from '../app/pipes/min-length.pipe'
-
+import {CdkStepperModule} from '@angular/cdk/stepper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,12 +52,14 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     EditProfileComponent,
     EditFieldComponent,
     WishlistComponent,
+    RecentOrderComponent,
+    OrderHistoryComponent,
    
   ],
   imports: [
     BrowserModule,
-    MenModule,HttpClientModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
-    ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,IvyCarouselModule,
+    MenModule,HttpClientModule,MatStepperModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
+    ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,IvyCarouselModule,CdkStepperModule,
     LoadingBarHttpClientModule,MatBadgeModule,FormsModule,
 
     
@@ -68,8 +73,9 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [MatStepper],
   exports:[],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

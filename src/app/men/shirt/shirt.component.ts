@@ -57,8 +57,9 @@ datad;
     let cartDataNull=localStorage.getItem('localCart');
     if(cartDataNull == null){
       let storeDataGet:any=[];
-      storeDataGet.push(category);
+      storeDataGet.push(category,category.status="ordered");
       localStorage.setItem('localCart',JSON.stringify(storeDataGet));
+ 
     }
     else{
       var id = category.userId;
@@ -68,17 +69,19 @@ datad;
         if((id) === (this.itemCart[i].userId)){
           this.itemCart[i].quantity=category.quantity;
           index = i;
+          this.itemCart[i].status=category.status="ordered"
           break;
         }
       }
     if(index == -1){
+      category.status="ordered"
       this.itemCart.push(category);
       localStorage.setItem('localCart',JSON.stringify(this.itemCart));
     }
     else{
       localStorage.setItem('localCart',JSON.stringify(this.itemCart));
     }
-
+ 
   }
   this.cardDatanfun()
   this.openSnackBar() 

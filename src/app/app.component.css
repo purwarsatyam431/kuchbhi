@@ -40,3 +40,9 @@
             color: #ffff;
             font-size: 20px;
         }
+        .mat-drawer-transition .mat-drawer-content {
+          transition-duration: 400ms;
+          transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition-property: transform,margin-left,margin-right;
+          overflow-x: hidden;
+      }

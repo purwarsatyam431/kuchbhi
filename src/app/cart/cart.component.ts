@@ -45,18 +45,24 @@ coupon:any='';
 subtotal(){
   if(this.coupon==='Satyam20'){
     this.subTotal=this.total-(this.total*20/100)
+    this.invalidCoupan=""
   }
   else if(this.coupon==='Satyam40'){
     this.subTotal=this.total-(this.total*40/100)
+    this.invalidCoupan=""
   }
-  
+  else if(this.coupon===''){
+    this.subTotal=this.total
+    this.invalidCoupan=""
+  }
   else{
     this.subTotal=this.total
+    this.invalidCoupan="Sorry Your coupon is not valid."
   }
 
 }
 
-
+invalidCoupan=""
 
 // PaymentGateway
 options = {
@@ -133,6 +139,7 @@ message;
 @HostListener('window:payment.success', ['$event'])
 onPaymentSuccess(event: any): void  {
 this.message = "success";
+
 //  alert(this.message)
 // alert(this.options.prefill.name)
 // alert(this.options.prefill.contact)
@@ -140,9 +147,10 @@ this.message = "success";
 console.log(event.detail.razorpay_payment_id)//pay_JUbBxDdSWtcVsG
 console.log(event)
 //his.pp(this.package_id,event.detail.razorpay_payment_id,this.message)
-this.form.setValue({email: this.email, CardDetails: this.getCartDetails,payment_Id:event.detail.razorpay_payment_id,payAmount:this.amunt})
+this.form.setValue({email: this.email, CardDetails: this.getCartDetails,payment_Id:event.detail.razorpay_payment_id,payAmount:this.amunt,orderType:'ordered'})
 this.publicService.postCart(this.form.value).subscribe((d)=>{
   console.log("success")
+  this.clearLocalCart()
 })
 Swal.fire({icon: 'success', title: this.message,text:event.detail.razorpay_payment_id});
 
@@ -163,6 +171,7 @@ email:new FormControl("",Validators.required),
 CardDetails:new FormControl("",[Validators.required]),
 payment_Id:new FormControl("",[Validators.required]),
 payAmount:new FormControl("",[Validators.required]),
+orderType:new FormControl("",[Validators.required]),
 })
 
 postCartData(){
@@ -203,6 +212,14 @@ getCartData(){
       
   }
   return this.getCartDetails
+  }
+}
+clearLocalCart(){
+  if(localStorage.getItem('localCart')){
+this.getCartDetails=localStorage.removeItem('localCart');
+this.behaviourService.cartSubject.next(0);
+    this.getTotal()
+    this.subTotal()
   }
 }
 delete(item){

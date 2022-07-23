@@ -17,6 +17,8 @@ import { MenserviceService } from './menservice.service';
     CommonModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,
     MenRoutingModule
   ],
+  exports:[MinLengthPipe]
+  ,
   providers:[]
 })
 export class MenModule { }

@@ -4,8 +4,9 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { BannerComponent } from './banner/banner.component';
 import { EditProfileComponent } from './Components/edit-profile/edit-profile.component';
 import { MyprofileComponent } from './Components/myprofile/myprofile.component';
+import { RecentOrderComponent } from './Components/recent-order/recent-order.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
-
+import { OrderHistoryComponent } from './Components/order-history/order-history.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthForCartGuard } from './services/auth-for-cart.guard';
@@ -17,6 +18,8 @@ const routes: Routes = [
   {path:"wishlist",component:WishlistComponent,canActivate:[AuthForCartGuard]},
   {path:"adminLogin",component:AdminLoginComponent},
   {path:"login",component:LoginComponent},
+  {path:"recentOrder",component:RecentOrderComponent},
+  {path:"orderhistory",component:OrderHistoryComponent},
   {path:'',redirectTo:'',pathMatch:'full'},
   {path:"**",component:ErrorComponent},
   {path:"banner",component:BannerComponent},
