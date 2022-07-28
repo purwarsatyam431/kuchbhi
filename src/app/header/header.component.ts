@@ -13,7 +13,7 @@ open=true;
   constructor(private s1:MenserviceService,public rt:Router
     ,private behaviourService:BehaviourService
     ) { }
-loginTrue:string='false';
+loginTrue:boolean=false;
   ngOnInit(): void {
 this.funLogin()
   this.s1.loginTrue.subscribe((d)=>this.loginTrue=d)
@@ -24,18 +24,18 @@ this.funLogin()
 funLogin(){
 if(localStorage.getItem("auth")){
 
-  this.loginTrue='true'
+  this.loginTrue=true
 }
 }
 funLoginfa(){
   if(localStorage.getItem(null)){
-  this.s1.loginTrue.next('false')
+  this.s1.loginTrue.next(false)
   }
   }
 
 logOut(){
   localStorage.removeItem("auth")
-  this.s1.loginTrue.next('false')
+  this.s1.loginTrue.next(false)
   this.rt.navigate(["/"])
   
 }

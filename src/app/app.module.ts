@@ -38,6 +38,7 @@ import { OrderHistoryComponent } from './Components/order-history/order-history.
 import {MatStepperModule,MatStepper} from '@angular/material/stepper';
 // import {MinLengthPipe} from '../app/pipes/min-length.pipe'
 import {CdkStepperModule} from '@angular/cdk/stepper';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,7 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
     BrowserModule,
     MenModule,HttpClientModule,MatStepperModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
     ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,IvyCarouselModule,CdkStepperModule,
-    LoadingBarHttpClientModule,MatBadgeModule,FormsModule,
+    LoadingBarHttpClientModule,MatBadgeModule,FormsModule,MatSelectModule,
 
     
     LoadingBarRouterModule,
@@ -74,7 +75,7 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
     BrowserAnimationsModule
   ],
   providers: [MatStepper],
-  exports:[],
+  exports:[MenModule],
   bootstrap: [AppComponent],
    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

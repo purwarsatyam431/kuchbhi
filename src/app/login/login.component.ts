@@ -71,8 +71,9 @@ signInForm(){
      console.log(res)
      this.data=res
     localStorage.setItem("UserInfo",JSON.stringify(this.data))
-    this.rt.navigate(["/cart"])
-    this.men.loginTrue.next('true')
+    this.rt.navigate(["/"])
+    this.men.loginTrue.next(true)
+    this.men.opened.next(true)
   },err=>{
 this.error=err
 this.hideError=false

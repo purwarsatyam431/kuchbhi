@@ -112,6 +112,14 @@ postMyProfile(data:any):Observable<any>{
         catchError(this.handleError)
       )
       }
+//OrderConFirmation
+getOrderDetail(Id:string,Userid:string):Observable<any>{
+  return this.http.get<any>("https://kuchbhi-5218a-default-rtdb.firebaseio.com/cart/"+Id+"/CardDetails/"+Userid+'.json')
+}
+
+editOrder(Id:string,Userid:string,data:any):Observable<any>{
+  return this.http.patch<any>("https://kuchbhi-5218a-default-rtdb.firebaseio.com/cart/"+Id+"/CardDetails/"+Userid+'.json',data)
+}
 
 private handleError(error: HttpErrorResponse) {
   if (error.error instanceof ErrorEvent) {
@@ -134,5 +142,6 @@ private handleError(error: HttpErrorResponse) {
   return throwError(this.errorData);
 
 }
-loginTrue=new Subject<string>()
+loginTrue=new Subject<boolean>()
+opened=new Subject<boolean>()
 }

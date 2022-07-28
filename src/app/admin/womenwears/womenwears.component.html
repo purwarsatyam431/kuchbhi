@@ -1,1 +1,37 @@
-<p>womenwears works!</p>
+
+<div class="container">
+    <ng-container  *ngFor="let E of data">
+        
+    
+        <ng-container *ngFor="let pant of E.CardDetails;  let i = index;">
+           
+            <div class="row" style="display: inline;">
+            <mat-card class=" text-center m-2 col-sm-2" style="float: left;">
+    
+                <img mat-card-image src="{{pant.image}}"  alt="{{pant.id}}">
+                
+                
+    
+                <mat-card-content >
+                 <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name |minLength:12}}</h1>
+                    <span><del>MRP:{{pant.MRP|currency:"INR"}}</del></span><br>
+                    <span>Rate:{{pant.Rate|currency:"INR"}}</span>
+                    <br>
+                    <!-- <button mat-mini-fab color="warn" (click)="minus(pant)">-</button>&nbsp; -->
+                    {{pant.quantity}}&nbsp;item&nbsp;{{pant.status}}
+                    <!-- <button (click)="plus(pant)"  mat-mini-fab  color="primary">+</button> -->
+                </mat-card-content>
+                <mat-card-actions >
+                    <!-- <a [routerLink]="['/detail',pant.userId]" color="primary" mat-raised-button>Specification</a> -->
+                    <button mat-button class="btn">
+                    <mat-icon style="color: darkgrey;"  (click)="funEditMode(E.userId,i)">edit</mat-icon>
+                </button>
+                  </mat-card-actions>
+                
+            </mat-card>
+        </div>
+    
+                </ng-container>
+    
+        </ng-container>
+    </div>

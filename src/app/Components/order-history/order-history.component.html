@@ -14,7 +14,7 @@
     
                 <mat-card-content >
                  <h1 style=" cursor: pointer; color: blue;" [routerLink]="['/detail',pant.userId]">{{pant.product_name |minLength:12}}</h1>
-                    <span>MRP:{{pant.MRP|currency:"INR"}}</span><br>
+                    <span><del>MRP:{{pant.MRP|currency:"INR"}}</del></span><br>
                     <span>Rate:{{pant.Rate|currency:"INR"}}</span>
                     <br>
                     <!-- <button mat-mini-fab color="warn" (click)="minus(pant)">-</button>&nbsp; -->

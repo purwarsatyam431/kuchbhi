@@ -21,15 +21,21 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { MinLengthPipe } from '../pipes/min-length.pipe';
+import { MenModule } from '../men/men.module';
+import { DeclarationComponent } from './declaration/declaration.component';
+import { AppModule } from '../app.module';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent],
+  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent, DeclarationComponent],
   imports: [
-    CommonModule,
+    CommonModule,MatSelectModule,
     AdminRoutingModule,MatTabsModule,MatListModule,MatPaginatorModule,MatProgressSpinnerModule,
     MatTableModule,
     MatButtonModule,MatIconModule
-    ,MatCardModule,MatMenuModule,MatInputModule,MatDialogModule,ReactiveFormsModule,FormsModule
-  ]
+    ,MatCardModule,MatMenuModule,MatInputModule,MatDialogModule,ReactiveFormsModule,FormsModule,MenModule
+  ],
+  providers:[]
 })
 export class AdminModule { }
