@@ -39,6 +39,7 @@ import {MatStepperModule,MatStepper} from '@angular/material/stepper';
 // import {MinLengthPipe} from '../app/pipes/min-length.pipe'
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {MatSelectModule} from '@angular/material/select';
+import { CareerComponent } from './career/career.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import {MatSelectModule} from '@angular/material/select';
     WishlistComponent,
     RecentOrderComponent,
     OrderHistoryComponent,
+    CareerComponent,
    
   ],
   imports: [

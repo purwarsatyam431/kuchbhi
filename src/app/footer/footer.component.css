@@ -11,3 +11,7 @@ margin-left: 3rem;
 .row h2{
     color: darkgray;
 }
+p a{
+    color: darkgrey;
+    text-decoration: none;
+}

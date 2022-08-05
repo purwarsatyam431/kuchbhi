@@ -17,7 +17,8 @@ export class MenserviceService {
 
 
 url="https://kuchbhi-5218a-default-rtdb.firebaseio.com";
-Wishlist='/wishlist.json'
+Wishlist='/wishlist.json';
+Jobvacancy='/jobvacancy.json'
 
 
 errorData={}
@@ -97,6 +98,10 @@ getMyProfile():Observable<any>{
 return this.http.post(this.url+url+'/',data).pipe(catchError(this.handleError))
   }
 
+  deletepublic(url,id){
+    return this.http.delete(this.url+url+'/'+id+'.json')
+  }
+
 postMyProfile(data:any):Observable<any>{
   return this.http.post<any>(this.url+"/profile.json",data).pipe(
     catchError(this.handleError)
@@ -143,5 +148,5 @@ private handleError(error: HttpErrorResponse) {
 
 }
 loginTrue=new Subject<boolean>()
-opened=new Subject<boolean>()
+opened=new BehaviorSubject<boolean>(false)
 }

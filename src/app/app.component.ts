@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'kuchbhi';
 
   events: string[] = [];
-  opened: boolean=false;
+  opened: boolean=true;
 
   open=true;
   constructor(private s1:MenserviceService,public rt:Router

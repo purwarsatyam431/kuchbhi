@@ -46,3 +46,6 @@
           transition-property: transform,margin-left,margin-right;
           overflow-x: hidden;
       }
+      .sabac{
+        background-color: darkslateblue !important;
+      }

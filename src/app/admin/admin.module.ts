@@ -26,9 +26,11 @@ import { MenModule } from '../men/men.module';
 import { DeclarationComponent } from './declaration/declaration.component';
 import { AppModule } from '../app.module';
 import { MatSelectModule } from '@angular/material/select';
+import { AdminCareerComponent } from './admin-career/admin-career.component';
+import { AdminCareerListComponent } from './admin-career-list/admin-career-list.component';
 
 @NgModule({
-  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent, DeclarationComponent],
+  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent, DeclarationComponent, AdminCareerComponent, AdminCareerListComponent],
   imports: [
     CommonModule,MatSelectModule,
     AdminRoutingModule,MatTabsModule,MatListModule,MatPaginatorModule,MatProgressSpinnerModule,

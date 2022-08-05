@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-sm-4 col-md-4S">
+        <div class="row">
+            <div class="col-md-12">
+                <h2  class="text-center  animate__animated animate__pulse animate__infinite text-warning">Job Vaccancy</h2>
+            </div>
+        </div>
+<mat-card class="mb-2" *ngFor="let d of data">
+    <mat-card-header>
+        <mat-card-title>
+            Post Name:{{d.PostName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Location:{{d.Location}}</p>
+        <p>Experiance:{{d.Experiance}}</p>
+        <p>{{d.describe}}</p>
+        <p>{{d.skill}}</p>
+    </mat-card-content>
+</mat-card>
+
+    </div> 
+
+
+
+    <div class="col-sm-8 col-md-8">
+        <mat-card>
+            <mat-card-contant>
+<h1 class="text-center  animate__animated animate__pulse animate__infinite text-danger">Apply Now</h1>
+<form [formGroup]="form">
+<div class="row">
+<div class="col-md-12">
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="Name" name="name">
+        </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="Email" name="email">
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Contact No.</mat-label>
+        <input type="number" matInput formControlName="Contact" name="contact">
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Alternative Contact</mat-label>
+        <input type="number" matInput formControlName="AltContact" name="altcontact">
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Position</mat-label>
+        <input type="text" matInput formControlName="Position" name="position">
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Vaccancy</mat-label>
+        <mat-select formControlName="JobVaccany"   name="jobVaccancy">
+            <mat-option  *ngFor="let d of data" value="{{d.PostName}}">
+           {{d.PostName}}
+            </mat-option>
+          
+          </mat-select>
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field >
+        <mat-label>Job Type</mat-label>
+        <mat-select formControlName="JobType"   name="jobtype">
+          <mat-option  value="parttime">
+            Part Time
+          </mat-option>
+          <mat-option  value="fulltime">
+            Full Time
+          </mat-option>
+          <mat-option  value="contractbased">
+           Contract Based
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+</div>
+
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Experiance(If you have)</mat-label>
+        <input type="text" matInput formControlName="Experiance" name="experiance">
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>When you can join us?</mat-label>
+        <mat-select formControlName="Doj"   name="doj">
+            <mat-option  value="immediate">
+             Immediate
+            </mat-option>
+            <mat-option  value="onemonth">
+           In  One Month
+            </mat-option>
+            <mat-option  value="threemonth">
+           In Three Months
+            </mat-option>
+            <mat-option  value="moremonth">
+                More than three Months
+                 </mat-option>
+          </mat-select>
+    </mat-form-field>
+
+
+</div>
+<div class="col-md-12">
+
+    <mat-form-field>
+        <mat-label>Additional Info.</mat-label>
+        <textarea matInput formControlName="AddInfo"></textarea>
+
+    </mat-form-field>
+
+
+</div>
+
+<div class="col-md-12">
+
+  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+
+
+</div>
+
+
+
+</div>
+</form>
+</mat-card-contant>
+</mat-card>
+    </div> 
+
+</div>

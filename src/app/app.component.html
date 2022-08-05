@@ -23,7 +23,7 @@
     </mat-sidenav>
   
     <mat-sidenav-content>
-    
+<!--     
       <mat-toolbar id="toolbar"> 
 <mat-icon  (click)="sidenav.toggle()"  *ngIf="loginTrue===true" style="color: aliceblue; cursor: pointer;" >apps</mat-icon>
     <span style="color:#ffff; cursor: pointer;
@@ -40,7 +40,60 @@
         <button mat-stroked-button  routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue===false">Login</button>
     
         <button mat-stroked-button  *ngIf="loginTrue===true" (click)="logOut()">LogOut</button>
-        </mat-toolbar>
+        </mat-toolbar> -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sabac">
+          <div class="container-fluid">
+            <a class="navbar-brand" >
+              <span style="color:#ffff; cursor: pointer;
+              text-align: center;
+              border: 4px solid #ffff;
+              border-radius: 4px;
+              margin: 23px;
+              margin-left: 3px;
+              padding: 4px;
+              font-size: large;
+          " [routerLink]="['/login']" routerLinkActive="router-link-active"  >𝓚𝓾𝓬𝓱𝓑𝓱𝓲.𝓬𝓸𝓶</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page"  routerLink="/shirt">Shirts</a>
+                </li>
+                <li class="nav-item">
+                
+                  <a class="nav-link active" aria-current="page" routerLink="/pant" >Pants</a>
+                </li>
+                <li class="nav-item">
+                
+                 
+                  <a class="nav-link active" aria-current="page"  routerLink="/cart"><mat-icon matBadge="{{cardData}}" matBadgeColor="primary">shopping_cart</mat-icon></a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Actions
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+       -->
+              </ul>
+              <form class="d-flex">
+                <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button> -->
+                <button mat-button class="bg-light" routerLink="/login" routerLinkActive="router-link-active" *ngIf="loginTrue===false">LogIn</button>
+                <button mat-raised-button class="bg-light" *ngIf="loginTrue===true" (click)="logOut()">LogOut</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+
         <ngx-loading-bar></ngx-loading-bar>
         <app-header></app-header>
         <div class="container-fluid mb-3"> 

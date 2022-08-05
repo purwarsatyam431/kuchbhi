@@ -10,13 +10,16 @@ import { OrderHistoryComponent } from './Components/order-history/order-history.
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthForCartGuard } from './services/auth-for-cart.guard';
+import { CareerComponent } from './career/career.component';
 
 const routes: Routes = [
   {path:"My-profile",component:MyprofileComponent,canActivate:[AuthForCartGuard]},
  
   {path:"edit-Profile/:userId",component:EditProfileComponent ,canActivate:[AuthForCartGuard]},
+  {path:"career",component:CareerComponent},
   {path:"wishlist",component:WishlistComponent,canActivate:[AuthForCartGuard]},
-  {path:"adminLogin",component:AdminLoginComponent},
+  // {path:"adminLogin",component:AdminLoginComponent},
+  {path:"adminLogin",loadChildren:()=>import('./admin/admin.module').then(mod=>mod.AdminModule)},
   {path:"login",component:LoginComponent},
   {path:"recentOrder",component:RecentOrderComponent},
   {path:"orderhistory",component:OrderHistoryComponent},
