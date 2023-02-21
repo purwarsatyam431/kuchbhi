@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviourService } from 'src/app/behaviour.service';
 import { MenserviceService } from 'src/app/men/menservice.service';
@@ -14,16 +17,18 @@ import { DeclarationComponent } from '../declaration/declaration.component';
   styleUrls: ['./womenwears.component.css']
 })
 export class WomenwearsComponent implements OnInit {
-
+  obs:any;
   constructor(private s1Service:MenserviceService,private _formBuilder: FormBuilder
 
 ,    public dialog:MatDialog,public route:ActivatedRoute,
     private behaviour:BehaviourService,
-    public rt:Router
+    public rt:Router,private changeDetectorRef: ChangeDetectorRef
     ) { }
 
   ngOnInit(): void {
     this.fetchData()
+    // this.changeDetectorRef.detectChanges();
+    // this.dataSource.paginator = this.paginator;
   }
   data:any;
   error:any;
@@ -40,10 +45,12 @@ export class WomenwearsComponent implements OnInit {
       }
       return empArray
   
-    })).subscribe((d)=>{this.data=d 
-
-    
- 
+    })).subscribe((d)=>{
+      this.dataSource = new MatTableDataSource<any>(d)
+this.dataSource.paginator = this.paginator;
+      this.obs = this.dataSource.connect();
+      console.log(this.obs)
+      console.log('data',this.data)
     }
     ,((error)=>this.error=error))
   
@@ -55,6 +62,10 @@ export class WomenwearsComponent implements OnInit {
 
       }
 
+// paginator
+dataSource = new MatTableDataSource<any>();
+@ViewChild(MatPaginator) paginator: MatPaginator;
+// @ViewChild(MatSort) sort: MatSort;
 
 
 }

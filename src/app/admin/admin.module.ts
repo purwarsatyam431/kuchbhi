@@ -21,23 +21,30 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { MinLengthPipe } from '../pipes/min-length.pipe';
+import { MinLengthPipe } from '../shared/pipes/min-length.pipe';
 import { MenModule } from '../men/men.module';
 import { DeclarationComponent } from './declaration/declaration.component';
 import { AppModule } from '../app.module';
 import { MatSelectModule } from '@angular/material/select';
 import { AdminCareerComponent } from './admin-career/admin-career.component';
 import { AdminCareerListComponent } from './admin-career-list/admin-career-list.component';
+import { AdminComponent } from './admin/admin.component';
+// import { FilterPipe } from '../shared/pipes/filter.pipe';
+import { SharedModule } from '../shared/shared.module';
+// import { NgChartsModule } from 'ng2-charts';
+// import {Chartjs} from 'chart.js'
 
+// import * as Chart from 'chart.js';
 @NgModule({
-  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent, DeclarationComponent, AdminCareerComponent, AdminCareerListComponent],
+  declarations: [DashboardComponent, MenswearsComponent, WomenwearsComponent, ShirtsComponent, AddShirtsComponent, AdminLoginComponent, DeclarationComponent, AdminCareerComponent, AdminCareerListComponent, AdminComponent],
   imports: [
     CommonModule,MatSelectModule,
     AdminRoutingModule,MatTabsModule,MatListModule,MatPaginatorModule,MatProgressSpinnerModule,
     MatTableModule,
     MatButtonModule,MatIconModule
-    ,MatCardModule,MatMenuModule,MatInputModule,MatDialogModule,ReactiveFormsModule,FormsModule,MenModule
+    ,MatCardModule,MatMenuModule,MatInputModule,MatDialogModule,ReactiveFormsModule,FormsModule,MenModule,SharedModule
   ],
-  providers:[]
+  providers:[],
+  exports:[]
 })
 export class AdminModule { }

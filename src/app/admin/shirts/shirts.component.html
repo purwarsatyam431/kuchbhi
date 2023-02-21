@@ -7,8 +7,12 @@
 
 
 <a mat-stroked-button color="primary" (click)="openDialog()" > <mat-icon>add</mat-icon> Add Product</a>
-<div *ngIf="data;else sat">
-<table mat-table [dataSource]="data">
+<div *ngIf="dataSource;else sat">
+  <mat-form-field appearance="standard">
+    <!-- <mat-label>Filter</mat-label> -->
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource">
 
           <!-- ID Column -->
           <ng-container matColumnDef="MRP">
@@ -57,6 +61,10 @@
         
         
         </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons 
+        aria-label="Select page of periodic elements">
+</mat-paginator>
       </div>
       <ng-template #sat>
 

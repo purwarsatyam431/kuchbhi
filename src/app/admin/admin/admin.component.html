@@ -1,0 +1,58 @@
+
+<div class="container-fluid">
+
+
+
+    <div class="row">
+        <div class="col-md-2" >
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                     MENU
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        
+                        <mat-selection-list [multiple]="false">
+                            <mat-list-option >
+                     <a [matMenuTriggerFor]="MENUU">PRODUCTS</a>
+                    <mat-menu #MENUU="matMenu">
+                        <a mat-menu-item routerLink="./shirts" routerLinkActive="active">Shirts</a>
+                        <a mat-menu-item routerLink="./pants" routerLinkActive="active">Pants</a>    
+                    
+                    </mat-menu> 
+                            </mat-list-option>
+                            <mat-list-option>
+                                <a routerLink="./women" routerLinkActive="active">ORDERED PRODUCTS</a>
+                            </mat-list-option>
+                
+                            <mat-list-option>
+                                <a routerLink="./jobVaccancy" routerLinkActive="active">Career</a>
+                            </mat-list-option>
+                            <mat-list-option>
+                                <a routerLink="./Dashboard" routerLinkActive="active">Career</a>
+                            </mat-list-option>
+                          </mat-selection-list>    
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <img src="assets/design/photo2.jpg" class="text-center  animate__animated animate__pulse animate__infinite text-warning" alt="1" style="width: -webkit-fill-available;">
+
+              <img src="assets/design/photo1.jpg" alt="2" class="mt-2" style="width: -webkit-fill-available;" class="text-center  animate__animated animate__pulse animate__infinite text-warning">
+           
+        </div>
+    
+    
+        <div class="col-md-10">
+            
+            <app-dashboard *ngIf="rt.url=='/admin'"></app-dashboard>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    
+    
+    </div>

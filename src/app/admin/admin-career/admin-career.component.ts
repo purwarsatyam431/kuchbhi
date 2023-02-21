@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MenserviceService } from 'src/app/men/menservice.service';
 import  {map} from 'rxjs/operators'
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-admin-career',
   templateUrl: './admin-career.component.html',
@@ -34,6 +36,8 @@ this.fetchData()
 
   data;
   errors;
+  dataSource = new MatTableDataSource<any>();
+@ViewChild(MatPaginator) paginator: MatPaginator;
   fetchData(){
     this.men.getMethod(this.men.Jobvacancy).pipe(map(responseData=>{
      // console.log(responseData);
@@ -46,7 +50,12 @@ this.fetchData()
       }
       }
       return empArray
-    })).subscribe((d)=>this.data=d,((error)=>this.errors=error))
+    })).subscribe((d)=>
+    {
+      this.dataSource = new MatTableDataSource<any>(d)
+      this.dataSource.paginator = this.paginator;
+            this.data = this.dataSource.connect();
+    },((error)=>this.errors=error))
   }
 
   delete(d){
@@ -55,4 +64,24 @@ this.fetchData()
 this.fetchData()
     })
   }
+
+
+  // filter
+  searchText:string='';
+filter:boolean=false;
+filterTrue(){
+  this.filter=!this.filter
+}
+search(value: string): void {
+  // this.BasicInfo = this.BasicInfo.filter((val:any) => val.name.toLowerCase().includes(value));
+  console.log(value)
+}
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
+  }
+}
 }

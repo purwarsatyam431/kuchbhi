@@ -14,10 +14,19 @@
                 <div class="col-sm-4 col-md-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2  class="text-center  animate__animated animate__pulse animate__infinite text-warning">Job Vaccancy</h2>
+                            <h2  class="text-center  animate__animated animate__pulse animate__infinite text-warning">Job Vaccancy <mat-icon (click)="filterTrue()">{{filter?'filter_alt_off':'filter_alt'}}</mat-icon></h2>
                         </div>
                     </div>
-            <mat-card class="mb-2" *ngFor="let d of data">
+                    <mat-form-field class="example-full-width" appearance="fill" *ngIf="filter===true">
+                        <!-- <mat-label>Favorite food</mat-label> -->
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Search by Post Name" #input>
+                        <!-- <input matInput placeholder="Search by Post Name" [(ngModel)]="searchText" (input)="search(searchText)"> -->
+                      </mat-form-field>
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons 
+    aria-label="Select page of periodic elements">
+</mat-paginator>
+            <mat-card class="mb-2" *ngFor="let d of data|async |filter:searchText">
                 <mat-card-header>
                     <mat-card-title>
                         Post Name:{{d.PostName}}</mat-card-title>

@@ -1,11 +1,16 @@
+<div class="container-fluid">
 <div class="row">
-    <div class="col-sm-4 col-md-4S">
+    <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="col-md-12">
-                <h2  class="text-center  animate__animated animate__pulse animate__infinite text-warning">Job Vaccancy</h2>
+                <h2  class="text-center  animate__animated animate__pulse animate__infinite text-warning">Job Vaccancy <mat-icon (click)="filterTrue()">{{filter?'filter_alt_off':'filter_alt'}}</mat-icon> </h2>
             </div>
         </div>
-<mat-card class="mb-2" *ngFor="let d of data">
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="filter===true">
+            <!-- <mat-label>Favorite food</mat-label> -->
+            <input matInput placeholder="Search by Post Name" [(ngModel)]="searchText" (input)="search(searchText)">
+          </mat-form-field>
+<mat-card class="mb-2" *ngFor="let d of data |filter:searchText">
     <mat-card-header>
         <mat-card-title>
             Post Name:{{d.PostName}}</mat-card-title>
@@ -19,10 +24,9 @@
 </mat-card>
 
     </div> 
-
-
-
-    <div class="col-sm-8 col-md-8">
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
         <mat-card>
             <mat-card-contant>
 <h1 class="text-center  animate__animated animate__pulse animate__infinite text-danger">Apply Now</h1>
@@ -78,7 +82,7 @@
     <mat-form-field>
         <mat-label>Vaccancy</mat-label>
         <mat-select formControlName="JobVaccany"   name="jobVaccancy">
-            <mat-option  *ngFor="let d of data" value="{{d.PostName}}">
+            <mat-option  *ngFor="let d of vacancy" value="{{d.PostName}}">
            {{d.PostName}}
             </mat-option>
           
@@ -163,5 +167,5 @@
 </mat-card-contant>
 </mat-card>
     </div> 
-
+</div>
 </div>

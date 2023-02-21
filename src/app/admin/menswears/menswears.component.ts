@@ -1,6 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, ViewChild, AfterViewInit, OnInit, AfterContentChecked, AfterContentInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { BehaviourService } from 'src/app/behaviour.service';
@@ -22,6 +25,8 @@ export class  MenswearsComponent implements OnInit{
   constructor(private s1:MenserviceService,public dialog:MatDialog,private behaviour:BehaviourService,
     public rt:Router){}
   data=[];
+  dataSource = new MatTableDataSource<any>();
+
 errors;
 
 
@@ -39,7 +44,12 @@ fetchData(){
     }
     }
     return empArray
-  })).subscribe((d)=>this.data=d,((error)=>{this.errors=error
+  })).subscribe((d)=>{
+  this.dataSource = new MatTableDataSource<any>(d)
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
+  ,((error)=>{this.errors=error
   console.log(error)
   }))
 }
@@ -62,5 +72,20 @@ funView(id){
   this.rt.navigate(['/detail',id])
     }
   
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+    ngAfterViewInit() {
+      // console.log(this.dataSource)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
   }
 

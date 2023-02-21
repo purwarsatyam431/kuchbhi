@@ -7,8 +7,12 @@
 
 
 <button mat-stroked-button color="primary" (click)="openDialog()"> <mat-icon>add</mat-icon> Add Product</button>
-<div *ngIf="data">
-<table mat-table [dataSource]="data" >
+<div *ngIf="dataSource">
+  <mat-form-field appearance="standard">
+    <!-- <mat-label>Filter</mat-label> -->
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource" mat-sort>
   
             <!-- ID Column -->
             <ng-container matColumnDef="MRP">
@@ -22,26 +26,26 @@
               <td mat-cell *matCellDef="let row"> {{row.Rate}} </td>
             </ng-container>
         
-            <!-- Name Column -->
+            <!-- image-->
             <ng-container matColumnDef="image">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
               <td mat-cell *matCellDef="let row"> <img [src]="row.image" width="50px" height="50px"></td>
             </ng-container>
         
-            <!-- Fruit Column -->
+            <!-- Product name -->
             <ng-container matColumnDef="product_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> product_name </th>
               <td mat-cell *matCellDef="let row"> {{row.product_name}} </td>
             </ng-container>
         
       
-            
+            <!-- quantity -->
             <ng-container matColumnDef="quantity">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> quantity </th>
               <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
             </ng-container>
       
-            
+            <!-- userId -->
             <ng-container matColumnDef="userId">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
               <td mat-cell *matCellDef="let row"> <button mat-mini-fab color="accent" (click)="funEditPntMode(row.userId)" >
@@ -57,6 +61,10 @@
           
           
           </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons 
+          aria-label="Select page of periodic elements">
+</mat-paginator>
         </div>
         <div class="error" *ngIf="errors">
           <h1>Status:{{errors.status}}</h1>

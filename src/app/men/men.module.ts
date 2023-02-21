@@ -9,15 +9,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card'
-import { MinLengthPipe } from '../pipes/min-length.pipe';
+
 import { MenserviceService } from './menservice.service';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
-  declarations: [PantComponent, ShirtComponent, DetailComponent ,MinLengthPipe],
+  declarations: [PantComponent, ShirtComponent, DetailComponent],
   imports: [
     CommonModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,
-    MenRoutingModule
+    MenRoutingModule,SharedModule
   ],
-  exports:[MinLengthPipe]
+  exports:[]
   ,
   providers:[]
 })

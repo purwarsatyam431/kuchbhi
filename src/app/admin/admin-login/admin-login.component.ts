@@ -20,7 +20,7 @@ export class AdminLoginComponent implements OnInit {
   signInForm(){
     if(this.form.value.email==='Admin@Kuchbhi.com' && this.form.value.password==="123qwe"){
       localStorage.setItem("auth",'1')
-      this.rt.navigate(['/Dashboard'])
+      this.rt.navigate(['/admin'])
     }
   }
   }

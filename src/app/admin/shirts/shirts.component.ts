@@ -1,5 +1,8 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { BehaviourService } from 'src/app/behaviour.service';
@@ -23,6 +26,9 @@ export class ShirtsComponent implements OnInit {
     public rt:Router
     ){}
   data:any=[];
+  dataSource = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 errors;
 editMode:string='true';
 col=['image','product_name','MRP','Rate','quantity','userId']
@@ -39,7 +45,11 @@ fetchData(){
     }
     }
     return empArray
-  })).subscribe((d)=>this.data=d,((error)=>this.errors=error))
+  })).subscribe((d)=>{
+    this.dataSource = new MatTableDataSource<any>(d)
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  },((error)=>this.errors=error))
 }
 openDialog(){
   this.dialog.open(AddShirtsComponent).afterClosed().subscribe((d)=>
@@ -66,5 +76,12 @@ console.log(id)
   funView(id){
 this.rt.navigate(['/detail',id])
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

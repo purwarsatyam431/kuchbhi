@@ -1,38 +1,4 @@
+<div class="col-12">
 
-<div class="container-fluid">
-
-
-
-<div class="row">
-    <div class="col-md-2">
-        <mat-selection-list [multiple]="false">
-            <mat-list-option >
-     <a [matMenuTriggerFor]="MENUU">PRODUCTS</a>
-    <mat-menu #MENUU="matMenu">
-        <a mat-menu-item routerLink="./shirts" routerLinkActive="active">Shirts</a>
-        <a mat-menu-item routerLink="./pants" routerLinkActive="active">Pants</a>    
-    
-    </mat-menu> 
-            </mat-list-option>
-            <mat-list-option>
-                <a routerLink="./women" routerLinkActive="active">ORDERED PRODUCTS</a>
-            </mat-list-option>
-
-            <mat-list-option>
-                <a routerLink="./jobVaccancy" routerLinkActive="active">Career</a>
-            </mat-list-option>
-            <mat-list-option>
-                <a routerLink="./jobVaccancylist" routerLinkActive="active">Career</a>
-            </mat-list-option>
-          </mat-selection-list>
-    </div>
-
-
-    <div class="col-md-10">
-        
-        <router-outlet></router-outlet>
-    </div>
-</div>
-
-
+    <canvas id="stackedBar" ></canvas>
 </div>

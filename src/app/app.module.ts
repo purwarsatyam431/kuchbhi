@@ -40,6 +40,8 @@ import {MatStepperModule,MatStepper} from '@angular/material/stepper';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import { CareerComponent } from './career/career.component';
+import { SharedModule } from './shared/shared.module';
+// import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,11 +66,8 @@ import { CareerComponent } from './career/career.component';
     MenModule,HttpClientModule,MatStepperModule,MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatCardModule
     ,MatMenuModule,ReactiveFormsModule,MatInputModule,MatSnackBarModule,IvyCarouselModule,CdkStepperModule,
     LoadingBarHttpClientModule,MatBadgeModule,FormsModule,MatSelectModule,
-
-    
+SharedModule,
     LoadingBarRouterModule,
-
-  
     LoadingBarModule,
     MenRoutingModule,
     AdminModule,
