@@ -24,6 +24,8 @@
     "@ngx-loading-bar/core": "^5.1.2",
     "@ngx-loading-bar/http-client": "^5.1.2",
     "@ngx-loading-bar/router": "^5.1.2",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/chart.js": "^2.9.37",
     "angular-responsive-carousel": "^2.1.2",
     "bootstrap": "^5.1.3",

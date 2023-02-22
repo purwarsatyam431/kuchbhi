@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule,HttpClient} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenRoutingModule } from './men/men-routing.module';
@@ -42,6 +42,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { CareerComponent } from './career/career.component';
 import { SharedModule } from './shared/shared.module';
 // import { FilterPipe } from './pipes/filter.pipe';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,13 @@ SharedModule,
     AdminModule,
     AdminRoutingModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [MatStepper],
   exports:[MenModule],
@@ -81,3 +89,6 @@ SharedModule,
    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

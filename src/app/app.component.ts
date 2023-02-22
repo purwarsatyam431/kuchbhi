@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviourService } from './behaviour.service';
 import { MenserviceService } from './men/menservice.service';
-
+import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,8 +16,11 @@ export class AppComponent {
 
   open=true;
   constructor(private s1:MenserviceService,public rt:Router
-    ,private behaviourService:BehaviourService
-    ) { }
+    ,private behaviourService:BehaviourService,private translate: TranslateService
+    ) {
+      translate.setDefaultLang('hindi');
+    translate.use('hindi');
+     }
 loginTrue:Boolean=false;
   ngOnInit(): void {
 this.funLogin()
