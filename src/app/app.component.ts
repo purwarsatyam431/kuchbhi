@@ -18,8 +18,8 @@ export class AppComponent {
   constructor(private s1:MenserviceService,public rt:Router
     ,private behaviourService:BehaviourService,private translate: TranslateService
     ) {
-      translate.setDefaultLang('hindi');
-    translate.use('hindi');
+      translate.setDefaultLang('en');
+    translate.use('en');
      }
 loginTrue:Boolean=false;
   ngOnInit(): void {
