@@ -42,7 +42,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CareerComponent } from './career/career.component';
 import { SharedModule } from './shared/shared.module';
 // import { FilterPipe } from './pipes/filter.pipe';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateStore} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 @NgModule({
   declarations: [
@@ -83,7 +83,7 @@ SharedModule,
       }
   })
   ],
-  providers: [MatStepper],
+  providers: [MatStepper,TranslateStore],
   exports:[MenModule],
   bootstrap: [AppComponent],
    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

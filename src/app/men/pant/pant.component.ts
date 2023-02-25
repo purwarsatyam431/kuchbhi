@@ -13,7 +13,10 @@ import { MenserviceService } from '../menservice.service';
 })
 export class PantComponent implements OnInit {
 
-  constructor(private men:MenserviceService,private behaviourService:BehaviourService,private _snackBar: MatSnackBar) { }
+  constructor(private men:MenserviceService,private behaviourService:BehaviourService,private _snackBar: MatSnackBar, 
+    ) {
+
+     }
 pants;
 errorData;
   ngOnInit(): void {

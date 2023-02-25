@@ -13,16 +13,20 @@ export class AppComponent {
 
   events: string[] = [];
   opened: boolean=true;
-
+language=localStorage.getItem('language')
   open=true;
   constructor(private s1:MenserviceService,public rt:Router
     ,private behaviourService:BehaviourService,private translate: TranslateService
     ) {
-      translate.setDefaultLang('en');
-    translate.use('en');
+      translate.setDefaultLang(this.language);
+    translate.use(this.language);
      }
 loginTrue:Boolean=false;
+useLanguage(language: string): void {
+  this.translate.use(language);
+}
   ngOnInit(): void {
+
 this.funLogin()
   this.s1.loginTrue.subscribe((d)=>this.loginTrue=d)
   this.s1.opened.subscribe((d)=>this.opened=d)
