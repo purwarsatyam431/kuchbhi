@@ -24,7 +24,6 @@
               "src/assets"
             ],
             "styles": [
-
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
@@ -127,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "kuchbhi"
+  "defaultProject": "kuchbhi",
+  "cli": {
+    "analytics": "618311ab-4c74-4dc8-b143-041a5c873e7c"
+  }
 }

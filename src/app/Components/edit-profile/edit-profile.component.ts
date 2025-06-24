@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenserviceService } from 'src/app/men/menservice.service';
 import { Myprof } from '../edit-field/edit-field.component';
+import * as moment from 'moment';
+import { Moment} from 'moment';
+import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-edit-profile',
@@ -86,4 +89,13 @@ getData(){
   )
 }
 
+readonly date = new FormControl(moment());
+  
+setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+  const ctrlValue = this.date.value ?? moment();
+  ctrlValue.month(normalizedMonthAndYear.month());
+  ctrlValue.year(normalizedMonthAndYear.year());
+  this.date.setValue(ctrlValue);
+  datepicker.close();
+}
 }

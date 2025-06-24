@@ -5,14 +5,14 @@
                     <img mat-card-lg-image [src]="info.image" style="width: inherit" alt="">
                     <br>
                     <br>
-                    <p class="text-primary">{{info.firstName}} {{info.lastName}}({{info.age}})</p>
+                    <p class="text-primary">{{info.firstName}} {{info.lastName}}({{info.age| date | age}})</p>
         </div>
         <div class="col-sm-8">
             <h2>Personal Information&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" (click)="remote(info.userId)" ></h2>
            <label>First Name:</label> <span class="values">{{info.firstName}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" (click)="funEditMode('firstName',info.firstName,info.userId)"></span><br><br>
            <label>Last Name:</label> <span class="values">{{info.lastName}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
            <label>Email:</label> <span class="values">{{info.email}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>
-           <label>Age:</label> <span class="values">{{info.age}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
+           <label>DOB:</label> <span class="values">{{info.age| date}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
            <label>Mobile No.:</label> <span class="values">{{info.mobile}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
            <label>Alternative Mobile No.:</label> <span class="values">{{info.altMobile}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;" ></span><br><br>
            <label>Address:</label> <span class="values">{{info.address}}&nbsp;&nbsp;<img src="assets/edit.png" alt="" style="cursor: pointer;"></span><br><br>

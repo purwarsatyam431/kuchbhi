@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { AddShirtsComponent } from 'src/app/admin/add-shirts/add-shirts.component';
 import { BehaviourService } from 'src/app/behaviour.service';
 import { MenserviceService } from 'src/app/men/menservice.service';
 import { EditFieldComponent } from '../edit-field/edit-field.component';

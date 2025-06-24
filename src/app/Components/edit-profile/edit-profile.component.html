@@ -35,14 +35,22 @@
                     <input type="text" matInput formControlName="email">
                 </mat-form-field>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <mat-form-field>
-                    <mat-label>Age</mat-label>
-                    <input type="number" matInput formControlName="age">
-                </mat-form-field>
+                    <mat-label>DOB</mat-label>
+                    <input matInput [matDatepicker]="dp" formControlName="age">
+                    <mat-hint>MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle  mat-icon-button matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp
+                                    startView="multi-year"
+                                    (monthSelected)="setMonthAndYear($event, dp)"
+                                    panelClass="example-month-picker">
+                    </mat-datepicker>
+                  </mat-form-field>
+                  
                 
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <img [src]="PersonalInfo.value.image" alt="saa" width="200px" height="200px">
                 <br>
                 <br>
